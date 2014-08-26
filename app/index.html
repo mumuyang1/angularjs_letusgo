@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     <!-- Add your site or application content here -->
-    <div class="container">
+    <div class="container" ng-controller="CartSumsCtrl" >
 
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#">
@@ -33,7 +33,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                  <span class="glyphicon glyphicon-shopping-cart text-warning">
-                    <a ng-href="#/cart">我的购物车({{cartsums}}）</a>
+                    <a ng-href="#/cart">我的购物车({{cartsums}})</a>
                  </span>
                     </li>
                 </ul>
@@ -71,11 +71,15 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!--<script src="scripts/model/cart_items.js"></script>-->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/index.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/shoppingMall.js"></script>
-        <script src="scripts/controllers/shoppingMall_controller.js"></script>
+        <script src="scripts/model/items.js"></script>
+
+
         <!-- endbuild -->
 </body>
 </html>

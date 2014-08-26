@@ -16,8 +16,4 @@ angular.module('anLetusgoApp')
     ];
   });
 
-function localStorage(){
 
-  var cartProduct = JSON.parse(localStorage.getItem('cartProduct'));
-
-}
