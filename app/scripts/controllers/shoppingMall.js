@@ -2,6 +2,7 @@
 angular.module('anLetusgoApp')
     .controller('ShoppingMallCtrl', function ($scope) {
         $scope.items = getItems();
+        localStorage.setItem('allItems',JSON.stringify($scope.items));
     });
 
 function getItems(){
@@ -17,7 +18,4 @@ function getItems(){
         new Item('ITEM000008','饰品','钻石项链','160000.00','个'),
         new Item('ITEM000009','饰品','翡翠手镯','200.00','个')
     ];
-
-
 }
-
