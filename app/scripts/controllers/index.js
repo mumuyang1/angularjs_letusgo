@@ -6,8 +6,7 @@ angular.module('anLetusgoApp')
             'Karma'
         ];
 
-  $scope.cartsums = 0;
-
+  $scope.cartsums = JSON.parse(localStorage.getItem('cartSum'));
   $scope.addCartSum = function(item){
 
       if(!localStorage.getItem('cartSum')){
@@ -38,38 +37,14 @@ angular.module('anLetusgoApp')
 
  });
 
- function judgeIsExist(cartProduct,item){
+function judgeIsExist(cartProduct,item){
+// console.log(item);
     for(var i = 0; i < cartProduct.length; i++) {
-        if(item.barcode === cartProduct[i].items.barcode){
-
+// console.log(item.name);
+        if(item.name === cartProduct[i].items.name){
             cartProduct[i].inputCount++;
             return true;
         }
     }
     return false;
 }
-
-// function judgeCategory(category){
-//
-//     if(categories.length == 0){
-//         return true;
-//     }
-//     else {
-//         for (var j = 0; j < categories.length; j++) {
-//             if (category === categories[j]){
-//                 return false;
-//             }
-//         }
-//         return true;
-//     }
-// }
-//
-// function getTotal(cartProduct){
-//
-//     var total = 0;
-//     _.forEach(cartProduct,function(cartProduct){
-//
-//         total += cartProduct.items.price * cartProduct.inputCount;
-//     });
-//     return total;
-// }

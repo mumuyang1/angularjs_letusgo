@@ -15,11 +15,11 @@
         <div class="col-md-2 form-group">{{cartItem.items.name}}</div>
         <div class="col-md-2 form-group">{{cartItem.items.price}}/{{cartItem.items.unit}}</div>
         <div class="col-md-3 form-group form-inline ">
-          <button class="addButton">+</button>
-        <input class="inputNum" id="cartProduct.items.barcode" type="text" ng-model='cartItem.inputCount'>
-          <button class="reduceButton">-</button></div>
-        <div class="col-md-2 form-group"><button id="cartProduct.items.barcode" class="deleteButton">移除</button></div>
-        <div id="' + 'button' + cartProduct.items.barcode + '" class="col-md-1">
+          <button ng-click="addButton(cartItem.items)">+</button>
+        <input class="inputNum" type="text" ng-model='cartItem.inputCount'>
+          <button ng-click="reduceButton(cartItem.items)">-</button></div>
+        <div class="col-md-2 form-group"><button ng-click="deleteButton(cartItem.items)">移除</button></div>
+        <div class="col-md-1">
           {{cartItem.items.price * cartItem.inputCount}}
         </div>
       </div>
