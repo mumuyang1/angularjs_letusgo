@@ -3,7 +3,7 @@
 angular.module('anLetusgoApp')
     .controller('CartCtrl', function ($scope) {
       var cartProduct = JSON.parse(localStorage.getItem('cartProduct'));
-      $scope.cartItems = cartProduct;
+      $scope.cartItems = cartProduct;  
       $scope.total = getTotal(cartProduct);
     });
 
