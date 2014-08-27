@@ -36,11 +36,11 @@ angular.module('anLetusgoApp')
 
 function judgeIsExist(cartProduct,item){
 
-    for(var i = 0; i < cartProduct.length; i++) {
-        if(item.name === cartProduct[i].items.name){
-            cartProduct[i].inputCount++;
-            return true;
-        }
-    }
+    _.forEach(cartProduct,function(cartProduct){
+      if(item.name === cartProduct.items.name){
+          cartProduct.inputCount++;
+          return true;
+      }
+    });
     return false;
 }
