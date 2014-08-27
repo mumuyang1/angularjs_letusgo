@@ -11,8 +11,7 @@ angular.module('anLetusgoApp')
         _.forEach(cartProduct,function(cartProduct){
           if(cartProduct.items.name === cartItem.name){
           cartProduct.inputCount += 1;
-          $scope.cartsums++;
-          $scope.$parent.addCartSum(cartItem);
+          $scope.$parent.cartsums++;
           }
         });
         $scope.total = getTotal(cartProduct);
@@ -27,9 +26,7 @@ angular.module('anLetusgoApp')
                cartProduct.inputCount = 1;
             }else{
               cartProduct.inputCount -= 1;
-              $scope.cartsums--;
-              console.log(cartSums);
-             $scope.$parent.addCartSum(cartItem);
+              $scope.$parent.cartsums--;
             }
           }
         });
@@ -41,8 +38,7 @@ angular.module('anLetusgoApp')
       $scope.deleteButton = function(cartItem){
         for(var i = 0; i < cartProduct.length; i++){
           if(cartProduct[i].items.name === cartItem.name){
-           $scope.cartsums = $scope.cartsums - cartProduct[i].inputCount;
-           $scope.$parent.addCartSum(cartItem);
+           $scope.$parent.cartsums = $scope.cartsums - cartProduct[i].inputCount;
            cartProduct = _.without(cartProduct,cartProduct[i]);
           }
         }
