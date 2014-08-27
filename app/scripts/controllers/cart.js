@@ -2,6 +2,7 @@
 
 angular.module('anLetusgoApp')
     .controller('CartCtrl', function ($scope) {
+
       var cartProduct = JSON.parse(localStorage.getItem('cartProduct'));
       var cartSums = JSON.parse(localStorage.getItem('cartSum'));
       $scope.cartItems = cartProduct;
@@ -10,8 +11,8 @@ angular.module('anLetusgoApp')
       $scope.addButton = function(cartItem){
         _.forEach(cartProduct,function(cartProduct){
           if(cartProduct.items.name === cartItem.name){
-          cartProduct.inputCount += 1;
-          $scope.$parent.cartsums++;
+            cartProduct.inputCount += 1;
+            $scope.$parent.cartsums++;
           }
         });
         $scope.total = getTotal(cartProduct);
@@ -38,8 +39,8 @@ angular.module('anLetusgoApp')
       $scope.deleteButton = function(cartItem){
         for(var i = 0; i < cartProduct.length; i++){
           if(cartProduct[i].items.name === cartItem.name){
-           $scope.$parent.cartsums = $scope.cartsums - cartProduct[i].inputCount;
-           cartProduct = _.without(cartProduct,cartProduct[i]);
+             $scope.$parent.cartsums = $scope.cartsums - cartProduct[i].inputCount;
+             cartProduct = _.without(cartProduct,cartProduct[i]);
           }
         }
         $scope.cartItems = cartProduct;
@@ -54,6 +55,5 @@ function getTotal(cartProduct){
     _.forEach(cartProduct,function(cartProduct){
         total += cartProduct.items.price * cartProduct.inputCount;
     });
-
     return total;
 }
