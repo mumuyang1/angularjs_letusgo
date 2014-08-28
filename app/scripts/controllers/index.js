@@ -33,5 +33,10 @@ angular.module('anLetusgoApp')
 
       };
 
+      $scope.pay = function(cartItem,cartProduct){
+            $scope.cartsums = CartItemService.pay(cartItem,cartProduct);
+
+        };
+
 
     });

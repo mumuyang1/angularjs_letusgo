@@ -72,4 +72,14 @@ angular.module('anLetusgoApp')
             return total;
         };
 
+        this.pay = function(cartProduct){
+
+            cartProduct = [];
+            localStorage.setItem('cartProduct',JSON.stringify(cartProduct));
+            var cartSums = 0;
+            localStorage.setItem('cartSum',JSON.stringify(cartSums));
+            return cartSums;
+
+        };
+
     });
