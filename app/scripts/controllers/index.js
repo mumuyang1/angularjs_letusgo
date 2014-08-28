@@ -1,5 +1,5 @@
 angular.module('anLetusgoApp')
-    .controller('CartSumsCtrl', function ($scope) {
+    .controller('CartSumsCtrl', function ($scope,ItemsService, CartItemService) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -8,39 +8,30 @@ angular.module('anLetusgoApp')
 
       var temp = localStorage.getItem('cartSum');
       var cartSum = temp ? parseInt(temp) : 0;
+
       localStorage.setItem('cartSum',JSON.stringify(cartSum));
       $scope.cartsums = JSON.parse(localStorage.getItem('cartSum'));
 
+
       $scope.addCartSum = function(item){
+        $scope.cartsums = ItemsService.addCart(item);
+      };
 
-          cartSum += 1;
-          localStorage.setItem('cartSum',JSON.stringify(cartSum));
-          $scope.cartsums = cartSum;
 
-          var cartProduct = JSON.parse(localStorage.getItem('cartProduct'));
-          var cartItem = new CartItems(item,1);
+      $scope.add = function(cartItem,cartProduct){
+          $scope.cartsums = CartItemService.add(cartItem,cartProduct);
+      };
 
-          if(!cartProduct){
-              cartProduct = [];
-              cartProduct.push(cartItem);
-          }
-          else{
-                if(!judgeIsExist(cartProduct,item)){
-                    cartProduct.push(cartItem);
-              }
-          }
-          localStorage.setItem('cartProduct',JSON.stringify(cartProduct));
-        }
 
- });
+      $scope.reduce = function(cartItem,cartProduct){
+          $scope.cartsums = CartItemService.reduce(cartItem,cartProduct);
 
-function judgeIsExist(cartProduct,item){
+      };
 
-    _.forEach(cartProduct,function(cartProduct){
-      if(item.name === cartProduct.items.name){
-          cartProduct.inputCount++;
-          return true;
-      }
+      $scope.delete = function(cartItem,cartProduct){
+           $scope.cartsums = CartItemService.delete(cartItem,cartProduct);
+
+      };
+
+
     });
-    return false;
-}

@@ -1,59 +1,31 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-    .controller('CartCtrl', function ($scope) {
+    .controller('CartCtrl', function ($scope,CartItemService){
 
-      var cartProduct = JSON.parse(localStorage.getItem('cartProduct'));
-      var cartSums = JSON.parse(localStorage.getItem('cartSum'));
-      $scope.cartItems = cartProduct;
-      $scope.total = getTotal(cartProduct);
+      $scope.cartItems = JSON.parse(localStorage.getItem('cartProduct'));
+      $scope.cartsums = JSON.parse(localStorage.getItem('cartSum'));
+      $scope.total = CartItemService.getTotal($scope.cartItems);
+
 
       $scope.addButton = function(cartItem){
-        _.forEach(cartProduct,function(cartProduct){
-          if(cartProduct.items.name === cartItem.name){
-            cartProduct.inputCount += 1;
-            $scope.$parent.cartsums++;
-          }
-        });
-        $scope.total = getTotal(cartProduct);
-        localStorage.setItem('cartProduct',JSON.stringify(cartProduct));
-        localStorage.setItem('cartSum',JSON.stringify($scope.cartsums));
+
+         $scope.$parent.add(cartItem,$scope.cartItems);
+         $scope.cartItems = JSON.parse(localStorage.getItem('cartProduct'));
+         $scope.total = CartItemService.getTotal($scope.cartItems);
+
       };
 
       $scope.reduceButton = function(cartItem){
-        _.forEach(cartProduct,function(cartProduct){
-          if(cartProduct.items.name === cartItem.name){
-            if(cartProduct.inputCount <= 1){
-               cartProduct.inputCount = 1;
-            }else{
-              cartProduct.inputCount -= 1;
-              $scope.$parent.cartsums--;
-            }
-          }
-        });
-        $scope.total = getTotal(cartProduct);
-        localStorage.setItem('cartProduct',JSON.stringify(cartProduct));
-        localStorage.setItem('cartSum',JSON.stringify($scope.cartsums));
+
+          $scope.$parent.reduce(cartItem,$scope.cartItems);
+          $scope.cartItems = JSON.parse(localStorage.getItem('cartProduct'));
+          $scope.total = CartItemService.getTotal($scope.cartItems);
       };
 
       $scope.deleteButton = function(cartItem){
-        for(var i = 0; i < cartProduct.length; i++){
-          if(cartProduct[i].items.name === cartItem.name){
-             $scope.$parent.cartsums = $scope.cartsums - cartProduct[i].inputCount;
-             cartProduct = _.without(cartProduct,cartProduct[i]);
-          }
-        }
-        $scope.cartItems = cartProduct;
-        $scope.total = getTotal(cartProduct);
-        localStorage.setItem('cartProduct',JSON.stringify(cartProduct));
-        localStorage.setItem('cartSum',JSON.stringify($scope.cartsums));
+          $scope.$parent.delete(cartItem,$scope.cartItems);
+          $scope.cartItems = JSON.parse(localStorage.getItem('cartProduct'));
+          $scope.total = CartItemService.getTotal($scope.cartItems);
       }
     });
-
-function getTotal(cartProduct){
-    var total = 0;
-    _.forEach(cartProduct,function(cartProduct){
-        total += cartProduct.items.price * cartProduct.inputCount;
-    });
-    return total;
-}
