@@ -1,16 +1,17 @@
 angular.module('anLetusgoApp')
-    .controller('CartSumsCtrl', function ($scope,ItemsService, CartItemService) {
+    .controller('CartSumsCtrl', function ($scope,ItemsService, CartItemService,localStorageService) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
-            'Karma'
+            'Karma',
+            'LocalStorageModule'
         ];
 
-      var temp = localStorage.getItem('cartSum');
+      var temp = localStorageService.get('cartSum');
       var cartSum = temp ? parseInt(temp) : 0;
 
-      localStorage.setItem('cartSum',JSON.stringify(cartSum));
-      $scope.cartsums = JSON.parse(localStorage.getItem('cartSum'));
+        localStorageService.set('cartSum',cartSum);
+      $scope.cartsums = localStorageService.get('cartSum');
 
 
       $scope.addCartSum = function(item){
