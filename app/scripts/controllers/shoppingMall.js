@@ -1,6 +1,6 @@
 
 angular.module('anLetusgoApp')
-    .controller('ShoppingMallCtrl', function ($scope, ItemsService,localStorageService) {
+    .controller('ShoppingMallCtrl', function ($scope, ItemsService) {
 
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
@@ -10,7 +10,5 @@ angular.module('anLetusgoApp')
         ];
 
         $scope.items = ItemsService.getItems();
-        localStorageService.set('allItems',($scope.items));
 
     });
-

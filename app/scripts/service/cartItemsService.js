@@ -10,7 +10,7 @@ angular.module('anLetusgoApp')
             var cartSums = 0;
             _.forEach(cartProduct, function (item) {
                 if (item.items.name === cartItem.name) {
-                    cartSums = localStorageService.get('cartSum');
+                    cartSums = +localStorageService.get('cartSum');
                     item.inputCount += 1;
                     cartSums += 1;
 
@@ -53,7 +53,7 @@ angular.module('anLetusgoApp')
            for(var i = 0; i < cartProduct.length; i++){
              if(cartProduct[i].items.name === cartItem.name){
 
-               cartSums = localStorageService.getItem('cartSum');
+               cartSums = localStorageService.get('cartSum');
                cartSums  = cartSums - cartProduct[i].inputCount;
                cartProduct = _.without(cartProduct,cartProduct[i]);
              localStorageService.set('cartProduct',cartProduct);
@@ -81,5 +81,15 @@ angular.module('anLetusgoApp')
             return cartSums;
 
         };
-       
+
+       this.set = function(key,value){
+
+         localStorageService.set(key,value);
+       };
+
+       this.get = function(key){
+
+        return localStorageService.get(key);
+
+       };
     });

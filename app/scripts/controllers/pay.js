@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-    .controller('PayCtrl', function ($scope,CartItemService,localStorageService) {
+    .controller('PayCtrl', function ($scope,CartItemService) {
 
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
@@ -10,12 +10,15 @@ angular.module('anLetusgoApp')
             'LocalStorageModule'
         ];
 
-      var cartProduct = localStorageService.get('cartProduct');
+      var cartProduct = CartItemService.get('cartProduct');
+
       $scope.cartItems = cartProduct;
       $scope.total = CartItemService.getTotal(cartProduct);
+
       $scope.payButton = function(cartItem){
+
           $scope.$parent.pay(cartItem,$scope.cartItems);
-          $scope.cartItems = localStorageService.getItem('cartProduct');
+          $scope.cartItems = CartItemService.get('cartProduct');
           $scope.total = CartItemService.getTotal($scope.cartItems);
       };
     });
