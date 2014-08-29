@@ -14,23 +14,23 @@ angular.module('anLetusgoApp')
         $scope.total = CartItemService.getTotal($scope.cartItems);
 
 
-        $scope.addButton = function (cartItem) {
+        $scope.addButton = function (cartItems){
 
-            $scope.$parent.add(cartItem, $scope.cartItems);
+            $scope.$emit('to-parent-add',cartItems,$scope.cartItems);
             $scope.cartItems = CartItemService.get('cartProduct');
             $scope.total = CartItemService.getTotal($scope.cartItems);
 
         };
 
-        $scope.reduceButton = function (cartItem) {
+        $scope.reduceButton = function (cartItems) {
 
-            $scope.$parent.reduce(cartItem, $scope.cartItems);
+            $scope.$emit('to-parent-reduce',cartItems,$scope.cartItems);
             $scope.cartItems = CartItemService.get('cartProduct');
             $scope.total = CartItemService.getTotal($scope.cartItems);
         };
 
-        $scope.deleteButton = function (cartItem) {
-            $scope.$parent.delete(cartItem, $scope.cartItems);
+        $scope.deleteButton = function (cartItems) {
+            $scope.$emit('to-parent-delete',cartItems,$scope.cartItems);
             $scope.cartItems = CartItemService.get('cartProduct');
             $scope.total = CartItemService.getTotal($scope.cartItems);
         }

@@ -10,7 +10,7 @@ angular.module('anLetusgoApp')
       var temp = CartItemService.get('cartSum');
       var cartSum = temp ? parseInt(temp) : 0;
 
-        CartItemService.set('cartSum',cartSum);
+      CartItemService.set('cartSum',cartSum);
       $scope.cartsums = CartItemService.get('cartSum');
 
 
@@ -19,25 +19,23 @@ angular.module('anLetusgoApp')
       };
 
 
-      $scope.add = function(cartItem,cartProduct){
-          $scope.cartsums = CartItemService.add(cartItem,cartProduct);
-      };
+      $scope.$on('to-parent-add',function(event,cartItems,cartProduct){
+          $scope.cartsums = CartItemService.add(cartItems,cartProduct);
+      });
 
 
-      $scope.reduce = function(cartItem,cartProduct){
-          $scope.cartsums = CartItemService.reduce(cartItem,cartProduct);
+      $scope.$on('to-parent-reduce',function(event,cartItems,cartProduct){
+          $scope.cartsums = CartItemService.reduce(cartItems,cartProduct);
+      });
 
-      };
 
-      $scope.delete = function(cartItem,cartProduct){
-           $scope.cartsums = CartItemService.delete(cartItem,cartProduct);
+      $scope.$on('to-parent-delete',function(event,cartItems,cartProduct){
+          $scope.cartsums = CartItemService.delete(cartItems,cartProduct);
+      });
 
-      };
 
-      $scope.pay = function(cartItem,cartProduct){
-            $scope.cartsums = CartItemService.pay(cartItem,cartProduct);
-
-        };
-
+      $scope.$on('to-parent-pay',function(event,cartItems,cartProduct){
+          $scope.cartsums = CartItemService.pay(cartItems,cartProduct);
+      });
 
     });
