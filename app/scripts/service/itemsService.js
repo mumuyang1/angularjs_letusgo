@@ -17,6 +17,7 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
   this.addCart = function(item){
       var cartSum = +CartItemService.get('cartSum');
           cartSum += 1;
+
       CartItemService.set('cartSum',cartSum);
 
       var cartProduct = CartItemService.get('cartProduct');
@@ -30,8 +31,10 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
       else{
             if(!this.judgeIsExist(cartProduct,item)){
                 cartProduct.push(cartItem);
+
           }
       }
+
       CartItemService.set('cartProduct',cartProduct);
       return cartSum;
     };
