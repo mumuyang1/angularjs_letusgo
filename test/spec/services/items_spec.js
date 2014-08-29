@@ -1,26 +1,29 @@
-/**
- * Created by liyanzi on 14-8-28.
- */
 'use strict';
 
 describe('Service: itemsService', function () {
+    var cartService,itemsService;
 
-   // load the controller's module
-   beforeEach(module('anLetusgoApp'));
-
-   var MainCtrl,
-       scope;
-
-   // Initialize the controller and a mock scope
    beforeEach(function(){
     module('anLetusgoApp');
       inject(function ($injector) {
-          localStorageService = $injector.get('localStorageService');
-          service = $injector.get('CartService');
+          cartService = $injector.get('CartItemService');
+          itemsService = $injector.get('ItemsService');
        });
    });
 
-   it('should attach a list of awesomeThings to the scope', function () {
-       expect(scope.awesomeThings.length).toBe(3);
+   it('should items  is right', function(){
+
+       var items = itemsService.getItems();
+       expect(items[0].name).toEqual('苹果');
+       expect(items[8].name).toEqual('翡翠手镯');
+       expect(items.length).toBe(9);
    });
+
+  //  it('should cartSum in addCart in right',function(){
+   //
+  //      var cartsum = itemsService.addCart();
+  //      expect(cartService.get('cartSum')).toHaveBeenCalled();;
+   //
+  //  });
+
 });

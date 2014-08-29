@@ -1,4 +1,4 @@
-angular.module('anLetusgoApp').service('ItemsService',function(CartItemService,localStorageService){
+angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
   this.getItems = function(){
 
     return [
@@ -15,14 +15,13 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService,l
           };
 
   this.addCart = function(item){
-      var cartSum = +localStorageService.get('cartSum');
+      var cartSum = +CartItemService.get('cartSum');
           cartSum += 1;
-      localStorageService.set('cartSum',cartSum);
+      CartItemService.set('cartSum',cartSum);
 
+      var cartProduct = CartItemService.get('cartProduct');
 
-      var cartProduct = localStorageService.get('cartProduct');
-
-      var cartItem = CartItemService.cartItems(item,1);
+      var cartItem = CartItemService.getCartItems(item,1);
 
       if(cartProduct === null){
           cartProduct = [];
@@ -33,7 +32,7 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService,l
                 cartProduct.push(cartItem);
           }
       }
-      localStorageService.set('cartProduct',cartProduct);
+      CartItemService.set('cartProduct',cartProduct);
       return cartSum;
     };
 
