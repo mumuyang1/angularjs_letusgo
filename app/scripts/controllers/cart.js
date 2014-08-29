@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-    .controller('CartCtrl', function ($scope, CartItemService,localStorageService) {
+    .controller('CartCtrl', function ($scope,CartItemService) {
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
             'AngularJS',
@@ -12,7 +12,6 @@ angular.module('anLetusgoApp')
         $scope.cartItems = CartItemService.get('cartProduct');
         $scope.cartsums = CartItemService.get('cartSum');
         $scope.total = CartItemService.getTotal($scope.cartItems);
-
 
         $scope.addButton = function (cartItems){
 

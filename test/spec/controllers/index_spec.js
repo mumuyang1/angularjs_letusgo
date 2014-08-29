@@ -55,9 +55,11 @@ describe('Controller: CartSumsCtrl', function () {
 
   it('should set get right',function(){
     spyOn(cartItemService,'get').andReturn(2);
+    spyOn(cartItemService,'set');
     createController();
     expect(scope.cartsums).toBe(2);
     expect(cartItemService.get.calls.length).toBe(2);
+    expect(cartItemService.set.calls.length).toBe(1);
   });
 
   // it('should add can do',function(){
