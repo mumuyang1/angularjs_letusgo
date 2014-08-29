@@ -12,6 +12,7 @@ angular.module('anLetusgoApp')
 
       CartItemService.set('cartSum',cartSum);
       $scope.cartsums = CartItemService.get('cartSum');
+      console.log($scope.cartsums+'======');
 
 
       $scope.addCartSum = function(item){
