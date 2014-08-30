@@ -9,10 +9,7 @@
  */
 angular.module('anLetusgoApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
     $scope.$emit('to-parent-mainActive');
+    
   });

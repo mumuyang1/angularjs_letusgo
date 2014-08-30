@@ -30,6 +30,13 @@ describe('Controller: ShoppingMallCtrl', function () {
       ];
     }));
 
+    it('should active is ok',function(){
+
+        spyOn(scope,'$emit');
+        createController();
+        expect(scope.$emit).toHaveBeenCalledWith('to-parent-shoppingMallActive');
+    })
+    
     it('should shopping list can show',function(){
 
       spyOn(itemsService,'getItems').andReturn(item);
@@ -37,6 +44,5 @@ describe('Controller: ShoppingMallCtrl', function () {
       expect(scope.items.length).toBe(2);
       expect(scope.items[0].name).toEqual('水杯');
       expect(scope.items[1].price).toBe('4.00')
-
     });
   });

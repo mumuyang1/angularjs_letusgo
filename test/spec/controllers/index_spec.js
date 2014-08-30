@@ -89,6 +89,7 @@ describe('Controller: CartSumsCtrl', function () {
     scope.$digest();
     expect(scope.cartsums).toBe(2);
   });
+
   it('should to-parent-pay can do',function(){
     createController();
     scope.$digest();
@@ -97,4 +98,42 @@ describe('Controller: CartSumsCtrl', function () {
     scope.$digest();
     expect(scope.cartsums).toBe(0);
   });
+
+  it('should to-parent-mainActive can do',function(){
+
+    createController();
+    scope.$digest();
+    $rootScope.$broadcast('to-parent-mainActive');
+    scope.$digest();
+    expect(scope.mainActive).toBe(true);
+    expect(scope.cartActive).toBe(false);
+    expect(scope.payActive).toBe(false);
+    expect(scope.shoppingMallActive).toBe(false);
+  });
+
+  it('should to-parent-shoppingMallActive can do',function(){
+
+    createController();
+    scope.$digest();
+    $rootScope.$broadcast('to-parent-shoppingMallActive');
+    scope.$digest();
+    expect(scope.mainActive).toBe(false);
+    expect(scope.cartActive).toBe(false);
+    expect(scope.payActive).toBe(false);
+    expect(scope.shoppingMallActive).toBe(true);
+  });
+
+  it('should to-parent-payActive can do',function(){
+
+    createController();
+    scope.$digest();
+    $rootScope.$broadcast('to-parent-payActive');
+    scope.$digest();
+    expect(scope.mainActive).toBe(false);
+    expect(scope.cartActive).toBe(false);
+    expect(scope.payActive).toBe(true);
+    expect(scope.shoppingMallActive).toBe(false);
+  });
+
+
 });
