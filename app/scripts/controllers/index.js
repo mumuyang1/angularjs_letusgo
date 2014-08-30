@@ -18,12 +18,12 @@ angular.module('anLetusgoApp')
       };
 
 
-      $scope.$on('to-parent-add',function(event,cartItems,cartProduct){
+      $scope.$on('to-parent-add',function(add,cartItems,cartProduct){
           $scope.cartsums = CartItemService.add(cartItems,cartProduct);
       });
 
 
-      $scope.$on('to-parent-reduce',function(event,cartItems,cartProduct){
+      $scope.$on('to-parent-reduce',function(reduce,cartItems,cartProduct){
           $scope.cartsums = CartItemService.reduce(cartItems,cartProduct);
       });
 
@@ -33,7 +33,7 @@ angular.module('anLetusgoApp')
       });
 
 
-      $scope.$on('to-parent-pay',function(event,cartItems,cartProduct){
+      $scope.$on('to-parent-pay',function(pay,cartItems,cartProduct){
           $scope.cartsums = CartItemService.pay(cartItems,cartProduct);
       });
 

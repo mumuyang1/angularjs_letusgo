@@ -6,11 +6,12 @@ describe('Controller: CartSumsCtrl', function () {
   beforeEach(module('anLetusgoApp'));
 
   var CartSumsCtrl,$controller,itemsService,cartItemService,
-    scope,createController,cartSum,item,$scope,cartProduct,event;
+    scope,createController,cartSum,item,$scope,cartProduct,$rootScope;
 
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
+    $rootScope = $injector.get('$rootScope');
     $controller = $injector.get('$controller');
 
     itemsService = $injector.get('ItemsService');
@@ -62,11 +63,38 @@ describe('Controller: CartSumsCtrl', function () {
     expect(cartItemService.set.calls.length).toBe(1);
   });
 
-  // it('should add can do',function(){
-  //   spyOn(cartItemService,'add').andReturn(3);;
-  //   createController();
-  //   scope.on(event,item,cartProduct);
-  //   expect(scope.cartsums).toBe(3);
-  // });
+  it('should to-parent-add can do',function(){
+    createController();
+    scope.$digest();
+    spyOn(cartItemService, 'add').andReturn(3);
+    $rootScope.$broadcast('to-parent-add');
+    scope.$digest();
+    expect(scope.cartsums).toBe(3);
+  });
 
+  it('should to-parent-reduce can do',function(){
+    createController();
+    scope.$digest();
+    spyOn(cartItemService, 'reduce').andReturn(5);
+    $rootScope.$broadcast('to-parent-reduce');
+    scope.$digest();
+    expect(scope.cartsums).toBe(5);
+  });
+
+  it('should to-parent-delete can do',function(){
+    createController();
+    scope.$digest();
+    spyOn(cartItemService, 'delete').andReturn(2);
+    $rootScope.$broadcast('to-parent-delete');
+    scope.$digest();
+    expect(scope.cartsums).toBe(2);
+  });
+  it('should to-parent-pay can do',function(){
+    createController();
+    scope.$digest();
+    spyOn(cartItemService, 'pay').andReturn(0);
+    $rootScope.$broadcast('to-parent-pay');
+    scope.$digest();
+    expect(scope.cartsums).toBe(0);
+  });
 });
