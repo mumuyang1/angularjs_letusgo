@@ -6,7 +6,7 @@ describe('Controller: CartCtrl', function () {
   beforeEach(module('anLetusgoApp'));
 
   var CartCtrl,$controller,cartItemService,
-    scope,createController,$scope,cartProduct,store;
+    scope,createController,$scope,cartProduct,store,item;
 
 
   beforeEach(inject(function ($injector) {
@@ -30,6 +30,8 @@ describe('Controller: CartCtrl', function () {
          }
       ];
 
+      item = {barcode:'ITEM000007',category:'生活用品',name:'水杯',price:'16.00',unit:'个'};
+
       store = {};
 
       spyOn(cartItemService, 'get').andCallFake(function (key) {
@@ -39,6 +41,8 @@ describe('Controller: CartCtrl', function () {
       spyOn(cartItemService, 'set').andCallFake(function (key, value) {
          return store[key] = value;
        });
+
+      spyOn(cartItemService,'getTotal').andReturn(16);
 
   }));
 
@@ -55,14 +59,39 @@ describe('Controller: CartCtrl', function () {
 
   it('should get total ok',function(){
 
-      spyOn(cartItemService,'getTotal').andReturn(16);
       createController();
       expect(cartItemService.getTotal.calls.length).toBe(1);
       expect(scope.total).toBe(16);
   })
 
-  // it('should addButton can do',function(){
-  //
-  //
-  // });
+  it('should addButton can do',function(){
+
+      createController();
+      spyOn(scope,'$emit');
+      scope.addButton(item);
+      expect(scope.$emit).toHaveBeenCalledWith('to-parent-add',item,scope.cartItems);
+      expect(cartItemService.get.calls.length).toBe(3);
+      expect(cartItemService.getTotal).toHaveBeenCalled();
+  });
+
+  it('should reduceButton can do',function(){
+
+      createController();
+      spyOn(scope,'$emit');
+      scope.reduceButton(item);
+      expect(scope.$emit).toHaveBeenCalledWith('to-parent-reduce',item,scope.cartItems);
+      expect(cartItemService.get.calls.length).toBe(3);
+      expect(cartItemService.getTotal).toHaveBeenCalled();
+  });
+
+  it('should deleteButton can do',function(){
+
+      createController();
+      spyOn(scope,'$emit');
+      scope.deleteButton(item);
+      expect(scope.$emit).toHaveBeenCalledWith('to-parent-delete',item,scope.cartItems);
+      expect(cartItemService.get.calls.length).toBe(3);
+      expect(cartItemService.getTotal).toHaveBeenCalled();
+  });
+
 });
