@@ -14,6 +14,5 @@ angular.module('anLetusgoApp')
       'AngularJS',
       'Karma'
     ];
+    $scope.$emit('to-parent-mainActive');
   });
-
-

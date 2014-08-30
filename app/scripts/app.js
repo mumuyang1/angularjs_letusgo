@@ -45,6 +45,10 @@ angular
         templateUrl: 'views/pay.html',
         controller: 'PayCtrl'
       })
+      .when('/productManage', {
+        templateUrl: 'views/productManage.html',
+        controller: 'ProductManageCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

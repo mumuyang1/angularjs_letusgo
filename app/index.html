@@ -24,14 +24,14 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="CartSumsCtrl" >
       <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#">
+          <li role="presentation" ng-class="{active:mainActive}"><a href="#">
               <span class="glyphicon glyphicon-home"></span>Let'sGo</a>
           </li>
-          <li role="presentation"><a ng-href="#/shoppingMall">商城</a></li>
-          <li role="presentation"><a ng-href="#/pay">结算</a></li>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-               <span class="glyphicon glyphicon-shopping-cart text-warning">
+          <li role="presentation" ng-class="{active:shoppingMallActive}"><a ng-href="#/shoppingMall">商城</a></li>
+          <li role="presentation" ng-class="{active:payActive}"><a ng-href="#/pay">结算</a></li>
+          <ul ng-class="{active:cartActive}">
+            <li class="nav navbar-nav navbar-right">
+               <span class="glyphicon glyphicon-shopping-cart">
                   <a ng-href="#/cart">我的购物车({{cartsums}})</a>
                </span>
             </li>

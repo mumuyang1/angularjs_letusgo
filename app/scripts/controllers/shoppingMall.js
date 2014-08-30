@@ -10,5 +10,6 @@ angular.module('anLetusgoApp')
         ];
 
         $scope.items = ItemsService.getItems();
+        $scope.$emit('to-parent-shoppingMallActive');
 
     });

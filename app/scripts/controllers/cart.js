@@ -9,6 +9,7 @@ angular.module('anLetusgoApp')
             'LocalStorageModule'
         ];
 
+        $scope.$emit('to-parent-cartActive');
         $scope.cartItems = CartItemService.get('cartProduct');
         $scope.cartsums = CartItemService.get('cartSum');
         $scope.total = CartItemService.getTotal($scope.cartItems);
