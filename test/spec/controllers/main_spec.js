@@ -18,7 +18,7 @@ describe('Controller: MainCtrl', function () {
       });
     };
 
-    }));
+  }));
 
     it('should active is ok',function(){
 

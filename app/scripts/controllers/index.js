@@ -50,12 +50,12 @@ angular.module('anLetusgoApp')
           $scope.payActive = false;
       });
 
-      // $scope.$on('to-parent-cartActive', function () {
-      //     $scope.mainActive = false;
-      //     $scope.shoppingMallActive = false;
-      //     $scope.cartActive = true;
-      //     $scope.payActive = false;
-      // });
+      $scope.$on('to-parent-cartActive', function () {
+          $scope.mainActive = false;
+          $scope.shoppingMallActive = false;
+          $scope.cartActive = true;
+          $scope.payActive = false;
+      });
 
       $scope.$on('to-parent-payActive', function () {
           $scope.mainActive = false;

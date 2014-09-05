@@ -24,18 +24,27 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="CartSumsCtrl">
       <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation"><h4>Let'sGo</h4></li>
           <li role="presentation" ng-class="{active:mainActive}"><a href="#">
-              <span class="glyphicon glyphicon-home"></span>Let'sGo</a>
+              <span class="glyphicon glyphicon-home"></span>主页</a>
           </li>
           <li role="presentation" ng-class="{active:shoppingMallActive}"><a ng-href="#/shoppingMall">商城</a></li>
           <li role="presentation" ng-class="{active:payActive}"><a ng-href="#/pay">结算</a></li>
           <ul class="nav navbar-nav navbar-right">
             <li ng-class="{active:cartActive}">
-               <span class="glyphicon glyphicon-shopping-cart">
-                  <a href="#/cart">我的购物车({{cartsums}})</a>
+               <span class="glyphicon glyphicon-shopping-cart"><a href="#/cart">我的购物车({{cartsums}})</a>
                </span>
             </li>
           </ul>
+          <li class="nav navbar-nav navbar-right">
+             <span class="glyphicon glyphicon-user"><a href="#/cart">商品信息管理&nbsp;</a>
+             </span>
+          </li>
+          <li class="nav navbar-nav navbar-right">
+             <span class="glyphicon glyphicon-user"><a href="#/productManage">商品分类管理&nbsp;&nbsp;</a>
+             </span>
+          </li>
+
       </ul>
       <div ng-view></div>
 
@@ -81,6 +90,7 @@
     <script src="scripts/controllers/shoppingMall.js"></script>
     <script src="scripts/controllers/cart.js"></script>
     <script src="scripts/controllers/pay.js"></script>
+    <script src="scripts/controllers/productManage.js"></script>
 
         <!-- endbuild -->
 </body>

@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25059163-2d4a-4a9d-9476-9bc03c0119d1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/spec/controllers/main.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/index.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/index_spec.js" afterPath="$PROJECT_DIR$/test/spec/controllers/index_spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/main.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/pay_spec.js" afterPath="$PROJECT_DIR$/test/spec/controllers/pay_spec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/shoppingmall_spec.js" afterPath="$PROJECT_DIR$/test/spec/controllers/shoppingmall_spec.js" />
-    </list>
+    <list default="true" id="25059163-2d4a-4a9d-9476-9bc03c0119d1" name="Default" comment="" />
     <ignored path="an-letusgo.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -589,12 +581,12 @@
       <workItem from="1409205631187" duration="11762000" />
       <workItem from="1409286870018" duration="3111000" />
       <workItem from="1409377423123" duration="308000" />
-      <workItem from="1409380575860" duration="1129000" />
+      <workItem from="1409380575860" duration="1183000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37982000" />
+    <option name="totallyTimeSpent" value="38036000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />

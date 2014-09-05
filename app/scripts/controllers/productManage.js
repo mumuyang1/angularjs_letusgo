@@ -1,5 +1,5 @@
 'use strict';
 angular.module('anLetusgoApp')
-  .controller('ProductManageCtrl', function ($scope) {
-
+  .controller('ProductManageCtrl', function ($scope,ItemsService) {
+      $scope.items = ItemsService.getItems();
   });
