@@ -30,21 +30,20 @@
           </li>
           <li role="presentation" ng-class="{active:shoppingMallActive}"><a ng-href="#/shoppingMall">商城</a></li>
           <li role="presentation" ng-class="{active:payActive}"><a ng-href="#/pay">结算</a></li>
-          <ul class="nav navbar-nav navbar-right">
-            <li ng-class="{active:cartActive}">
-               <span class="glyphicon glyphicon-shopping-cart"><a href="#/cart">我的购物车({{cartsums}})</a>
-               </span>
-            </li>
-          </ul>
-          <li class="nav navbar-nav navbar-right">
-             <span class="glyphicon glyphicon-user"><a href="#/cart">商品信息管理&nbsp;</a>
-             </span>
+          <li role="presentation" ng-class="{active:cartActive}"class="nav navbar-nav navbar-right" >
+              <span class="glyphicon glyphicon-shopping-cart"><a href="#/cart">我的购物车({{cartsums}})</a>
+              </span>
           </li>
-          <li class="nav navbar-nav navbar-right">
-             <span class="glyphicon glyphicon-user"><a href="#/productManage">商品分类管理&nbsp;&nbsp;</a>
-             </span>
+          <li role="presentation" class="dropdown nav navbar-nav navbar-right">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user">商品管理<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                  <li><a href="#/productManage">商品信息管理</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#/productManage">商品分类管理</a></li>
+              </ul>
           </li>
-
       </ul>
       <div ng-view></div>
 
