@@ -25,14 +25,42 @@
    <div class="panel-body">
    </div>
 </div>
+
 <div class="row">
-  <div class="col-md-4 text-center text-danger">
+  <div class="col-md-3 text-center text-danger">
     <h2>商品分类管理</h2>
   </div>
   <div class="col-md-3">
-      <div class="input-group">
-        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        <input type="text" class="form-control" ng-model="query" placeholder="搜索分类">
-      </div>
+    <div class="input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+      <input type="text" class="form-control" ng-model="query" placeholder="搜索分类">
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-7">
+      <div class="panel panel-default">
+           <div class="panel-heading text-center">
+             <div class="row">
+               <div class="col-md-4">分类ID</div>
+               <div class="col-md-4">分类名称</div>
+               <div class="col-md-4">删除分类</div>
+             </div>
+           </div>
+           <div class="panel-body text-center">
+             <div class="row">
+               <div class="col-md-4">
+                 <div ng-controller="CategoryManageCtrl">
+                   <a href="#" editable-text="category.id">{{ category.id || 'empty' }}</a>
+                 </div>
+               </div>
+               <div class="col-md-4">分类名称</div>
+               <div class="col-md-4">删除分类</div>
+             </div>
+           </div>
+      </div>
+  </div>
 </div>
