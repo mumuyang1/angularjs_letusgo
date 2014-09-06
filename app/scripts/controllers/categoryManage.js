@@ -1,12 +1,9 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-
-  .controller('CategoryManageCtrl', function ($scope) {
+.controller('CategoryManageCtrl', function ($scope,categoryManageService) {
 
     $scope.$emit('to-parent-productManageActive');
-      $scope.category = {
-      id : 1
-  };
+    $scope.categories = categoryManageService.getCategories();
 
   });
