@@ -41,6 +41,7 @@ angular.module('anLetusgoApp')
           $scope.shoppingMallActive = false;
           $scope.cartActive = false;
           $scope.payActive = false;
+          $scope.productManageActive = false;
       });
 
       $scope.$on('to-parent-shoppingMallActive', function () {
@@ -48,6 +49,7 @@ angular.module('anLetusgoApp')
           $scope.shoppingMallActive = true;
           $scope.cartActive = false;
           $scope.payActive = false;
+          $scope.productManageActive = false;
       });
 
       $scope.$on('to-parent-cartActive', function () {
@@ -55,6 +57,7 @@ angular.module('anLetusgoApp')
           $scope.shoppingMallActive = false;
           $scope.cartActive = true;
           $scope.payActive = false;
+          $scope.productManageActive = false;
       });
 
       $scope.$on('to-parent-payActive', function () {
@@ -62,6 +65,15 @@ angular.module('anLetusgoApp')
           $scope.shoppingMallActive = false;
           $scope.cartActive = false;
           $scope.payActive = true;
+          $scope.productManageActive = false;
+      })
+
+      $scope.$on('to-parent-productManageActive', function () {
+          $scope.mainActive = false;
+          $scope.shoppingMallActive = false;
+          $scope.cartActive = false;
+          $scope.payActive = false;
+          $scope.productManageActive = true;
       })
 
     });
