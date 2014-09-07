@@ -14,9 +14,9 @@
         <div class="col-md-2 form-group">{{cartItem.items.category}}</div>
         <div class="col-md-2 form-group">{{cartItem.items.name}}</div>
         <div class="col-md-2 form-group">{{cartItem.items.price}}/{{cartItem.items.unit}}</div>
-        <div class="col-md-3 form-group form-inline ">
+        <div class="col-md-3 form-group form-inline">
           <button ng-click="addButton(cartItem.items)">+</button>
-        <input class="inputNum" type="text" ng-model='cartItem.inputCount'>
+            <input class="inputNum" type="text" ng-model='cartItem.inputCount'>
           <button ng-click="reduceButton(cartItem.items)">-</button></div>
         <div class="col-md-2 form-group"><button ng-click="deleteButton(cartItem.items)">移除</button></div>
         <div class="col-md-1">
