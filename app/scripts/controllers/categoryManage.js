@@ -5,5 +5,4 @@ angular.module('anLetusgoApp')
 
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.getCategories();
-
   });

@@ -12,7 +12,7 @@
   <div class="col-md-3">
     <div class="input-group">
       <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-      <input type="text" class="form-control" ng-model="query" placeholder="搜索分类">
+      <input type="text" class="form-control" ng-model="searchText" placeholder="搜索分类">
     </div>
   </div>
   <div class="col-md-3 text-center">
@@ -27,21 +27,21 @@
     <div class="panel panel-default">
        <div class="panel-heading">
          <div class="row text-center">
-           <div class="col-md-4">分类</div>
+           <div class="col-md-4">分类名称</div>
            <div class="col-md-4">修改分类</div>
            <div class="col-md-4">删除分类</div>
          </div>
        </div>
-       <div class="panel-body" ng-repeat="category in categories">
+       <div class="panel-body" ng-repeat="category in categories | filter:searchText">
          <div class="row text-center">
            <div class="col-md-4 form-group">{{category.name}}</div>
            <div class="col-md-4 form-group">
              <a class="btn btn-lg" ng-href="#/catagoryChange">
-               <button ng-click="addCartSum(item)" type="button" class="btn btn-primary btn-sm add">修改分类</button>
+               <button ng-click="addCartSum(item)" type="button" class="btn btn-primary btn-sm add">修改该分类</button>
              </a>
            </div>
            <div class="col-md-4 form-group">
-             <button ng-click="addCartSum(item)" type="button" class="btn btn-danger btn-sm add">删除分类</button>
+             <button ng-click="addCartSum(item)" type="button" class="btn btn-danger btn-sm add">删除该分类</button>
            </div>
          </div>
        </div>
