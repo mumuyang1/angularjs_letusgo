@@ -45,15 +45,8 @@ angular.module('anLetusgoApp')
 
       $scope.clickChangeCategory = false;
       $scope.categoryName = localStorageService.get('toBeChange');
-      $scope.categories = categoryManageService.getCategories('categories');
-
-      _.forEach($scope.categories,function(category){
-
-        if(category.name === $scope.categoryName){
-          category.name = newName;
-          categoryManageService.setCategories('categories',$scope.categories);
-        };
-      });
+      categoryManageService.changeName($scope.categoryName,newName);
+      $scope.categories = categoryManageService.getCategories();
 
     };
 

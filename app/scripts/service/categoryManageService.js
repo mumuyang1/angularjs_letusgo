@@ -51,5 +51,17 @@ angular.module('anLetusgoApp')
         localStorageService.set('allProducts',allProducts);
       };
 
+      this.changeName = function(categoryName,newName){
+
+        var categories = this.getCategories();
+        _.forEach(categories,function(category){
+
+          if(category.name === categoryName){
+            category.name = newName;
+            localStorageService.set('categories',categories);
+          };
+        });
+
+      };
 
 });
