@@ -5,6 +5,7 @@ angular.module('anLetusgoApp')
 
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.getCategories();
+    $scope.categories = categoryManageService.getInitCategories();
     $scope.clickAddCategory = false;
 
 
