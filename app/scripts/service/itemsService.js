@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('anLetusgoApp').service('ItemsService',function(CartItemService,localStorageService){
   this.getItems = function(){
 
@@ -53,6 +55,5 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService,l
     }
 
     return false;
-  }
-
+  };
 });

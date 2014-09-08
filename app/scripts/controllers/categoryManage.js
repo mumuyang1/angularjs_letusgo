@@ -4,15 +4,14 @@ angular.module('anLetusgoApp')
 .controller('CategoryManageCtrl', function ($scope,categoryManageService,localStorageService) {
 
     $scope.$emit('to-parent-productManageActive');
-    $scope.categories = categoryManageService.getInitCategories();
-    // $scope.categories = categoryManageService.getCategories();
-    // console.log($scope.categories+'lllll');
-
+    $scope.categories = categoryManageService.getCategories();
     $scope.clickAddCategory = false;
+
 
     $scope.addCategory = function(){
       $scope.clickAddCategory = true;
     };
+
 
     $scope.finishAddCategory = function(newCategoryName){
       $scope.clickAddCategory = false;
@@ -23,16 +22,20 @@ angular.module('anLetusgoApp')
       categoryManageService.setCategories('categories',$scope.categories);
     };
 
+
     $scope.cancelAddCategory = function(){
       $scope.clickAddCategory = false;
     };
+
 
     $scope.deleteCategory = function(category){
       categoryManageService.deleteCategoryButton(category);
       $scope.categories = categoryManageService.getCategories();
     };
 
+
     $scope.clickChangeCategory = false;
+
 
     $scope.changeCategory = function(categoryName){
       $scope.clickChangeCategory = true;
@@ -40,15 +43,13 @@ angular.module('anLetusgoApp')
     };
 
 
-
     $scope.finishChangeCategory = function(newName){
-
       $scope.clickChangeCategory = false;
       $scope.categoryName = localStorageService.get('toBeChange');
       categoryManageService.changeName($scope.categoryName,newName);
       $scope.categories = categoryManageService.getCategories();
-
     };
+
 
     $scope.cancelChangeCategory = function(){
       $scope.clickChangeCategory = false;

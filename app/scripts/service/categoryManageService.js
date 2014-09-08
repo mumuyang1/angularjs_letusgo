@@ -1,5 +1,6 @@
 'use strict';
-angular.module('anLetusgoApp')
+
+  angular.module('anLetusgoApp')
     .service('categoryManageService', function (localStorageService) {
 
       this.buildCategoryData = function(){
@@ -45,7 +46,9 @@ angular.module('anLetusgoApp')
         var allProducts = localStorageService.get('allProducts');
         for(var i = 0; i < allProducts.length; i++){
           if(allProducts[i].category === category.name){
+
             allProducts = _.without(allProducts,allProducts[i]);
+            i--;
           }
         }
         localStorageService.set('allProducts',allProducts);
@@ -54,14 +57,23 @@ angular.module('anLetusgoApp')
       this.changeName = function(categoryName,newName){
 
         var categories = this.getCategories();
-        _.forEach(categories,function(category){
 
+        _.forEach(categories,function(category){
           if(category.name === categoryName){
-            category.name = newName;
-            localStorageService.set('categories',categories);
+              category.name = newName;
+              localStorageService.set('categories',categories);
           };
         });
 
+        var allProducts = localStorageService.get('allProducts');
+
+        _.forEach(allProducts,function(product){
+          if(product.category === categoryName){
+            product.category = newName;
+
+            localStorageService.set('allProducts',allProducts);
+          }
+        });
       };
 
 });

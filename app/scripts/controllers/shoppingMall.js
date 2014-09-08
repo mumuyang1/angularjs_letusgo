@@ -1,15 +1,9 @@
+'use strict';
 
 angular.module('anLetusgoApp')
-    .controller('ShoppingMallCtrl', function ($scope, ItemsService) {
+    .controller('ShoppingMallCtrl', function ($scope, localStorageService,ItemsService) {
 
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma',
-            'LocalStorageModule'
-        ];
-
-        $scope.items = ItemsService.getItems();
+        $scope.items = localStorageService.get('allProducts');
         $scope.$emit('to-parent-shoppingMallActive');
 
     });

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('anLetusgoApp')
     .controller('CartSumsCtrl', function ($scope,ItemsService, CartItemService) {
         $scope.awesomeThings = [

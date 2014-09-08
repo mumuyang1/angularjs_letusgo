@@ -1,4 +1,6 @@
-angular.module('anLetusgoApp')
+'use strict';
+
+  angular.module('anLetusgoApp')
     .service('CartItemService', function (localStorageService) {
 
         this.getCartItems = function (items, inputCount) {
@@ -11,7 +13,7 @@ angular.module('anLetusgoApp')
             var cartSums = 0;
 
             _.forEach(cartProduct, function (item) {
-              
+
                 if (item.items.name === cartItem.name) {
                     cartSums = +localStorageService.get('cartSum');
                     item.inputCount += 1;

@@ -53,9 +53,9 @@ angular
         templateUrl: 'views/categoryManage.html',
         controller: 'CategoryManageCtrl'
       })
-      .when('/categoryChange', {
-        templateUrl: 'views/categoryChange.html',
-        controller: 'CategoryChangeCtrl'
+      .when('/categoryManage', {
+        templateUrl: 'views/categoryManage.html',
+        controller: 'CategoryManageCtrl'
       })
       .otherwise({
         redirectTo: '/'
