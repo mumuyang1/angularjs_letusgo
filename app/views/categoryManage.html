@@ -20,9 +20,15 @@
       增添新分类<span class="glyphicon glyphicon glyphicon-hand-up"></span>
     </button>
   </div>
-  <div class="col-md-3 text-center form-inline" ng-show="clickAddCategory">
-    <input class="form-control" placeholder="请输入想添加的的分类名称" ng-model="newCategory.name">
+  <div class="col-md-4 text-center form-inline" ng-show="clickAddCategory">
+    <input class="form-control form-group" placeholder="请输入想添加的的分类名称" ng-model="newCategory.name">
     <input type="submit" class="btn btn-success btn-sm" value="添加" ng-click="finishAddCategory(newCategory.name)">
+    <input type="submit" class="btn btn-info btn-sm" value="取消" ng-click="cancelAddCategory()">
+  </div>
+  <div class="col-md-4 text-center form-inline" ng-show="clickChangeCategory">
+    <input class="form-control" placeholder="请输入" ng-model="newName">
+    <input type="submit" class="btn btn-primary btn-sm" value="修改" ng-click="finishChangeCategory(newName)">
+    <input type="submit" class="btn btn-info btn-sm" value="取消" ng-click="cancelChangeCategory()">
   </div>
 </div>
 
@@ -42,9 +48,9 @@
          <div class="row text-center">
            <div class="col-md-4 form-group">{{category.name}}</div>
            <div class="col-md-4 form-group">
-             <a class="btn btn-lg" ng-href="#/catagoryChange">
-               <button ng-click="changeCategory(category)" type="button" class="btn btn-primary btn-sm add">修改该分类</button>
-             </a>
+             <!-- <a class="btn btn-lg" ng-href="#/catagoryChange"> -->
+               <button ng-click="changeCategory(category.name)" type="button" class="btn btn-primary btn-sm add">修改该分类</button>
+             <!-- </a> -->
            </div>
            <div class="col-md-4 form-group">
              <button ng-click="deleteCategory(category)" type="button" class="btn btn-danger btn-sm add">删除该分类</button>

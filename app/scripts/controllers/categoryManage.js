@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-.controller('CategoryManageCtrl', function ($scope,categoryManageService) {
+.controller('CategoryManageCtrl', function ($scope,categoryManageService,localStorageService) {
 
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.getInitCategories();
+    // $scope.categories = categoryManageService.getCategories();
+    // console.log($scope.categories+'lllll');
 
     $scope.clickAddCategory = false;
 
@@ -21,10 +23,42 @@ angular.module('anLetusgoApp')
       categoryManageService.setCategories('categories',$scope.categories);
     };
 
+    $scope.cancelAddCategory = function(){
+      $scope.clickAddCategory = false;
+    };
+
     $scope.deleteCategory = function(category){
       categoryManageService.deleteCategoryButton(category);
       $scope.categories = categoryManageService.getCategories();
     };
 
+    $scope.clickChangeCategory = false;
+
+    $scope.changeCategory = function(categoryName){
+      $scope.clickChangeCategory = true;
+      localStorageService.set('toBeChange',categoryName);
+    };
+
+
+
+    $scope.finishChangeCategory = function(newName){
+
+      $scope.clickChangeCategory = false;
+      $scope.categoryName = localStorageService.get('toBeChange');
+      $scope.categories = categoryManageService.getCategories('categories');
+
+      _.forEach($scope.categories,function(category){
+
+        if(category.name === $scope.categoryName){
+          category.name = newName;
+          categoryManageService.setCategories('categories',$scope.categories);
+        };
+      });
+
+    };
+
+    $scope.cancelChangeCategory = function(){
+      $scope.clickChangeCategory = false;
+    };
 
 });
