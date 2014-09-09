@@ -1,8 +1,8 @@
 'use strict';
 angular.module('anLetusgoApp')
-  .controller('ProductManageCtrl', function ($scope,localStorageService,categoryManageService){
+  .controller('ProductManageCtrl', function ($scope,localStorageService,categoryManageService,productManageService){
 
-      $scope.items = localStorageService.get('allProducts');
+      $scope.allProducts = localStorageService.get('allProducts');
       $scope.$emit('to-parent-productManageActive');
 
 
@@ -14,18 +14,18 @@ angular.module('anLetusgoApp')
         $scope.clickAddProduct = true;
         $scope.controlLayout = false;
         $scope.categories = categoryManageService.getCategories();
-        // console.log($scope.categories);
       };
 
 
-      $scope.finishAddProduct = function(name,price,unit){
+      $scope.finishAddProduct = function(name,price,unit,category){
         $scope.clickAddProduct = false;
         $scope.controlLayout = true;
-        // $scope.newCategory = {id:0,name:newCategoryName};
-        // $scope.categories = categoryManageService.getCategories('categories');
-        // $scope.newCategory.id = $scope.categories[$scope.categories.length-1].id + 1;
-        // $scope.categories.push($scope.newCategory);
-        // categoryManageService.setCategories('categories',$scope.categories);
+        $scope.allProducts = localStorageService.get('allProducts');
+        $scope.newProduct = {barcode:'ITEM000001',category:category,name:name,price:price,unit:unit};
+        var i = +$scope.allProducts[$scope.allProducts.length - 1].barcode.substring(9,$scope.newProduct.barcode.length) + 1;
+        $scope.newProduct.barcode = $scope.allProducts[$scope.allProducts.length - 1].barcode.substring(0,9) + i;
+        $scope.allProducts.push($scope.newProduct);
+        localStorageService.set('allProducts',$scope.allProducts);
       };
 
 
@@ -61,6 +61,10 @@ angular.module('anLetusgoApp')
       };
 
 
+      $scope.deleteProduct = function(name){
+        productManageService.deleteProductButton(name);
+        $scope.allProducts = localStorageService.get('allProducts');
+      };
 
 
 
