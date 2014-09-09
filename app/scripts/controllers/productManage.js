@@ -1,9 +1,10 @@
 'use strict';
 angular.module('anLetusgoApp')
-  .controller('ProductManageCtrl', function ($scope,localStorageService){
+  .controller('ProductManageCtrl', function ($scope,localStorageService,categoryManageService){
 
       $scope.items = localStorageService.get('allProducts');
       $scope.$emit('to-parent-productManageActive');
+
 
       $scope.controlLayout = true;
       $scope.clickAddProduct = false;
@@ -12,6 +13,8 @@ angular.module('anLetusgoApp')
       $scope.addProduct = function(){
         $scope.clickAddProduct = true;
         $scope.controlLayout = false;
+        $scope.categories = categoryManageService.getCategories();
+        // console.log($scope.categories);
       };
 
 
@@ -38,6 +41,7 @@ angular.module('anLetusgoApp')
       $scope.changeProduct = function(categoryName){
         $scope.clickChangeProduct = true;
         $scope.controlLayout = false;
+        $scope.categories = categoryManageService.getCategories();
         // localStorageService.set('toBeChange',categoryName);
       };
 
