@@ -9,9 +9,7 @@
 
 
         this.add = function (cartItem, cartProduct) {
-
             var cartSums = 0;
-
             _.forEach(cartProduct, function (item) {
 
                 if (item.items.name === cartItem.name) {
@@ -25,8 +23,8 @@
             return cartSums;
         };
 
-        this.reduce = function(cartItem,cartProduct){
 
+        this.reduce = function(cartItem,cartProduct){
             var cartSums = 0;
             _.forEach(cartProduct, function (item) {
 
@@ -36,21 +34,20 @@
                         cartSums = localStorageService.get('cartSum');
                     }
                     else{
+                          cartSums = localStorageService.get('cartSum');
+                          item.inputCount -= 1;
+                          cartSums -= 1;
 
-                        cartSums = localStorageService.get('cartSum');
-                        item.inputCount -= 1;
-                        cartSums -= 1;
-
-                        localStorageService.set('cartSum', cartSums);
-                        localStorageService.set('cartProduct', cartProduct);
+                          localStorageService.set('cartSum', cartSums);
+                          localStorageService.set('cartProduct', cartProduct);
                     }
                 }
             });
             return cartSums;
         };
 
-        this.delete = function(cartItem,cartProduct){
 
+        this.delete = function(cartItem,cartProduct){
            for(var i = 0; i < cartProduct.length; i++){
              if(cartProduct[i].items.name === cartItem.name){
 
@@ -75,7 +72,6 @@
 
 
         this.pay = function(cartProduct){
-
             cartProduct = [];
             localStorageService.set('cartProduct',cartProduct);
             var cartSums = 0;
@@ -86,14 +82,12 @@
 
 
        this.set = function(key,value){
-
          localStorageService.set(key,value);
        };
 
 
        this.get = function(key){
-
         return localStorageService.get(key);
-
        };
+
     });
