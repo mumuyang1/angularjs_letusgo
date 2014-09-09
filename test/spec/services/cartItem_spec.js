@@ -2,7 +2,7 @@
 
 describe('Service: cartItemService', function () {
 
-    var cartService,cartItems,localStorageService,cartItem1,cartItem2,cartProduct,inputCount;
+    var cartService,cartItems,localStorageService,cartItem1,cartItem2,cartProduct,inputCount,cartSums;
 
      beforeEach(function(){
 
@@ -39,12 +39,13 @@ describe('Service: cartItemService', function () {
 
      var result = cartService.getCartItems(cartItem1,inputCount);
      expect(result.inputCount).toBe(8);
-  
+
    });
 
    it('should add can do',function(){
 
        var result = cartService.add(cartItem2,cartProduct);
+       console.log(result+'-----!');
        expect(result).toBe(5);
        expect(localStorageService.set.calls.length).toBe(2);
 
@@ -53,6 +54,7 @@ describe('Service: cartItemService', function () {
     it('should reduce can do',function(){
 
       var result = cartService.reduce(cartItem2,cartProduct);
+
       expect(result).toBe(3);
       expect(localStorageService.set.calls.length).toBe(2);
     });

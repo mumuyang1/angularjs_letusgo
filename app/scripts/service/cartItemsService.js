@@ -27,6 +27,7 @@
 
         this.reduce = function(cartItem,cartProduct){
 
+            var cartSums = 0;
             _.forEach(cartProduct, function (item) {
 
                 if (item.items.name === cartItem.name) {
@@ -53,7 +54,7 @@
            for(var i = 0; i < cartProduct.length; i++){
              if(cartProduct[i].items.name === cartItem.name){
 
-               cartSums = localStorageService.get('cartSum');
+               var cartSums = localStorageService.get('cartSum');
                cartSums  = cartSums - cartProduct[i].inputCount;
                cartProduct = _.without(cartProduct,cartProduct[i]);
              localStorageService.set('cartProduct',cartProduct);

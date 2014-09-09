@@ -6,7 +6,7 @@ describe('Controller: ShoppingMallCtrl', function () {
   beforeEach(module('anLetusgoApp'));
 
   var ShoppingMallCtrl,$controller,itemsService,
-    scope,createController,$scope,item;
+    scope,createController,$scope,item,CartItemService;
 
 
   beforeEach(inject(function ($injector) {
@@ -14,6 +14,7 @@ describe('Controller: ShoppingMallCtrl', function () {
     $controller = $injector.get('$controller');
 
     itemsService = $injector.get('ItemsService');
+    CartItemService = $injector.get('CartItemService');
 
     createController = function(){
 
@@ -36,10 +37,10 @@ describe('Controller: ShoppingMallCtrl', function () {
         createController();
         expect(scope.$emit).toHaveBeenCalledWith('to-parent-shoppingMallActive');
     })
-    
+
     it('should shopping list can show',function(){
 
-      spyOn(itemsService,'getItems').andReturn(item);
+      spyOn(CartItemService,'get').andReturn(item);
       createController();
       expect(scope.items.length).toBe(2);
       expect(scope.items[0].name).toEqual('水杯');
