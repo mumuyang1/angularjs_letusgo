@@ -42,16 +42,16 @@ angular.module('anLetusgoApp')
         $scope.clickChangeProduct = true;
         $scope.controlLayout = false;
         $scope.categories = categoryManageService.getCategories();
-        // localStorageService.set('toBeChange',categoryName);
+        localStorageService.set('productToBeChange',categoryName);
       };
 
 
-      $scope.finishChangeProduct = function(newName){
+      $scope.finishChangeProduct = function(newName,newPrice,newUnit,newCategory){
         $scope.clickChangeProduct = false;
         $scope.controlLayout = true;
-        // $scope.categoryName = localStorageService.get('toBeChange');
-        // categoryManageService.changeName($scope.categoryName,newName);
-        // $scope.categories = categoryManageService.getCategories();
+        $scope.productToBeChange = localStorageService.get('productToBeChange');
+        productManageService.changeProduct($scope.productToBeChange,newName,newPrice,newUnit,newCategory);
+        $scope.allProducts = localStorageService.get('allProducts');
       };
 
 

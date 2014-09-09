@@ -31,18 +31,19 @@
       名称：<input class="form-control" placeholder="请输入名称" ng-model="newProductName"><br>
       单价：<input class="form-control" placeholder="请输入单价" ng-model="newProductPrice"><br>
       单位：<input class="form-control" placeholder="请输入单位" ng-model="newProductUnit">
-              <input type="submit" class="btn btn-success btn-sm" value="添加"
-                  ng-click="finishAddProduct(newProductName,newProductPrice,newProductUnit,newProductCategory)">
-              <input type="submit" class="btn btn-info btn-sm" value="取消" ng-click="cancelAddProduct()">
+      <input type="submit" class="btn btn-success btn-sm" value="添加"
+          ng-click="finishAddProduct(newProductName,newProductPrice,newProductUnit,newProductCategory)">
+      <input type="submit" class="btn btn-info btn-sm" value="取消" ng-click="cancelAddProduct()">
     </div>
     <div class="col-md-4 text-left form-inline" ng-show="clickChangeProduct">
-      分类：<select class="form-control" ng-model="category.name">
+      分类：<select class="form-control" ng-model="newProductCategory">
                 <option ng-repeat="category in categories" value="{{category.name}}">{{category.name}}</option>
               </select><br>
       名称：<input class="form-control" placeholder="请输入新名称" ng-model="newName"><br>
       单价：<input class="form-control" placeholder="请输入新单价" ng-model="newPrice"><br>
       单位：<input class="form-control" placeholder="请输入新单位" ng-model="newUnit">
-      <input type="submit" class="btn btn-primary btn-sm" value="修改" ng-click="finishChangeProduct(newName,newPrice,newUnit,newProductCategory)">
+      <input type="submit" class="btn btn-primary btn-sm" value="修改"
+         ng-click="finishChangeProduct(newName,newPrice,newUnit,newProductCategory)">
       <input type="submit" class="btn btn-info btn-sm" value="取消" ng-click="cancelChangeProduct()">
     </div>
   <div class="col-md-8">
@@ -64,7 +65,7 @@
            <div class="col-md-2 form-group">{{item.price}}</div>
            <div class="col-md-2 form-group">{{item.unit}}</div>
            <div class="col-md-2 form-group">
-               <button ng-click="changeProduct(product)" type="button" class="btn btn-primary btn-sm add">修改该商品</button>
+               <button ng-click="changeProduct(item.name)" type="button" class="btn btn-primary btn-sm add">修改该商品</button>
            </div>
            <div class="col-md-2 form-group">
              <button ng-click="deleteProduct(item.name)" type="button" class="btn btn-danger btn-sm add">删除该商品</button>
