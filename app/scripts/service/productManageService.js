@@ -30,16 +30,7 @@
         };
       });
 
-      // var allProducts = localStorageService.get('allProducts');
-      //
-      // _.forEach(allProducts,function(product){
-      //   if(product.category === categoryName){
-      //     product.category = newName;
-      //
-      //     localStorageService.set('allProducts',allProducts);
-      //   }
-      // });
-    };
+};
 
 
 
