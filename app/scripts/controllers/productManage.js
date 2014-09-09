@@ -5,17 +5,19 @@ angular.module('anLetusgoApp')
       $scope.items = localStorageService.get('allProducts');
       $scope.$emit('to-parent-productManageActive');
 
-
+      $scope.controlLayout = true;
       $scope.clickAddProduct = false;
 
 
       $scope.addProduct = function(){
         $scope.clickAddProduct = true;
+        $scope.controlLayout = false;
       };
 
 
       $scope.finishAddProduct = function(name,price,unit){
         $scope.clickAddProduct = false;
+        $scope.controlLayout = true;
         // $scope.newCategory = {id:0,name:newCategoryName};
         // $scope.categories = categoryManageService.getCategories('categories');
         // $scope.newCategory.id = $scope.categories[$scope.categories.length-1].id + 1;
@@ -26,6 +28,7 @@ angular.module('anLetusgoApp')
 
       $scope.cancelAddProduct = function(){
         $scope.clickAddProduct = false;
+        $scope.controlLayout = true;
       };
 
 
@@ -34,12 +37,14 @@ angular.module('anLetusgoApp')
 
       $scope.changeProduct = function(categoryName){
         $scope.clickChangeProduct = true;
+        $scope.controlLayout = false;
         // localStorageService.set('toBeChange',categoryName);
       };
 
 
       $scope.finishChangeProduct = function(newName){
         $scope.clickChangeProduct = false;
+        $scope.controlLayout = true;
         // $scope.categoryName = localStorageService.get('toBeChange');
         // categoryManageService.changeName($scope.categoryName,newName);
         // $scope.categories = categoryManageService.getCategories();
@@ -48,6 +53,7 @@ angular.module('anLetusgoApp')
 
       $scope.cancelChangeProduct = function(){
         $scope.clickChangeProduct = false;
+        $scope.controlLayout = true;
       };
 
 
