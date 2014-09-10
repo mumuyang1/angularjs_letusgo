@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25059163-2d4a-4a9d-9476-9bc03c0119d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/categoryManage.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/categoryManage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/spec/controllers/index_spec.js" afterPath="$PROJECT_DIR$/test/spec/controllers/index_spec.js" />
     </list>
     <ignored path="an-letusgo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +14,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/an-letusgo$All_Test.coverage" NAME="All Test Coverage Results" MODIFIED="1410370133423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/an-letusgo$All_Test.coverage" NAME="All Test Coverage Results" MODIFIED="1410370791951" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -519,12 +518,12 @@
       <workItem from="1409380575860" duration="1183000" />
       <workItem from="1409916910277" duration="405000" />
       <workItem from="1410277534172" duration="761000" />
-      <workItem from="1410343493497" duration="5974000" />
+      <workItem from="1410343493497" duration="6614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45176000" />
+    <option name="totallyTimeSpent" value="45816000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
