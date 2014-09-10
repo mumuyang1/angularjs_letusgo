@@ -3,7 +3,7 @@
 describe('Service: categoryManageService', function () {
 
     var localStorageService,categoryService,categories,allProducts,
-        category;
+        category,newCategoryName;
 
      beforeEach(function(){
 
@@ -25,6 +25,7 @@ describe('Service: categoryManageService', function () {
                   {barcode:'ITEM000002',category:'水果',name:'香蕉',price:'3.50',unit:'斤'},
                   {barcode:'ITEM000003',category:'饮料',name:'可口可乐',price:'3.00',unit:'瓶'},
                 ];
+        newCategoryName = '食品';
 
         var store = {};
 
@@ -49,17 +50,20 @@ describe('Service: categoryManageService', function () {
 
    });
 
+
    it('should get categories function can do', function(){
 
       var result = categoryService.getCategories();
       expect(result.length).toBe(1);
    });
 
+
    it('should setCategories function can do', function(){
 
       categoryService.setCategories();
       expect(localStorageService.set.calls.length).toBe(3);
    });
+
 
    it('should deleteCategoryButton can do', function(){
       spyOn(categoryService,'getCategories').andReturn(categories);
@@ -70,6 +74,7 @@ describe('Service: categoryManageService', function () {
       expect(result.length).toBe(0);
    });
 
+
    it('should delete all products with the category when deleteCategory', function(){
       var result = categoryService.deleteProductsWithDeleteCategory(category);
       expect(localStorageService.get.calls.length).toBe(1);
@@ -78,4 +83,22 @@ describe('Service: categoryManageService', function () {
       expect(localStorageService.get.calls.length).toBe(1);
    });
 
+
+   it('should change category name can do', function(){
+      spyOn(categoryService,'getCategories').andReturn(categories);
+      spyOn(categoryService,'updateProductsCategory');
+      var result = categoryService.changeName(category.name,newCategoryName);
+      expect(result[0].name).toBe('食品');
+      expect(categoryService.updateProductsCategory.calls.length).toBe(1);
+   });
+
+
+  it('should the products category can update when category name change', function(){
+     var result = categoryService.updateProductsCategory(category.name,newCategoryName);
+     expect(localStorageService.get.calls.length).toBe(1);
+     expect(result.length).toBe(3);
+     expect(result[0].category).toBe('食品');
+     expect(result[1].category).toBe('食品');
+     expect(localStorageService.get.calls.length).toBe(1);
+  });
 });
