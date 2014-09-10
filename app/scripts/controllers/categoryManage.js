@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('anLetusgoApp')
-.controller('CategoryManageCtrl', function ($scope,categoryManageService,localStorageService) {
+.controller('CategoryManageCtrl', function ($scope,categoryManageService,CartItemService) {
 
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.getCategories();
@@ -40,13 +40,13 @@ angular.module('anLetusgoApp')
 
     $scope.changeCategory = function(categoryName){
       $scope.clickChangeCategory = true;
-      localStorageService.set('categoryToChange',categoryName);
+      CartItemService.set('categoryToChange',categoryName);
     };
 
 
     $scope.finishChangeCategory = function(newName){
       $scope.clickChangeCategory = false;
-      $scope.categoryName = localStorageService.get('categoryToChange');
+      $scope.categoryName = CartItemService.get('categoryToChange');
       categoryManageService.changeName($scope.categoryName,newName);
       $scope.categories = categoryManageService.getCategories();
     };
