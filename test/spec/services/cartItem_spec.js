@@ -2,7 +2,7 @@
 
 describe('Service: cartItemService', function () {
 
-    var cartService,cartItems,localStorageService,cartItem1,cartItem2,cartProduct,inputCount,cartSums;
+    var cartService,localStorageService,cartItem1,cartItem2,cartProduct,inputCount;
 
      beforeEach(function(){
 
@@ -28,7 +28,7 @@ describe('Service: cartItemService', function () {
         inputCount = 8;
 
         cartItem2 = {barcode:'ITEM000003',category:'水果',name:'菠萝',price:'4.00',unit:'个'};
-        cartItem1 ={barcode:'ITEM000007',category:'生活用品',name:'水杯',price:'16.00',unit:'个'}
+        cartItem1 ={barcode:'ITEM000007',category:'生活用品',name:'水杯',price:'16.00',unit:'个'};
 
         spyOn(localStorageService,'get').andReturn(4);
         spyOn(localStorageService,'set');
@@ -45,7 +45,6 @@ describe('Service: cartItemService', function () {
    it('should add can do',function(){
 
        var result = cartService.add(cartItem2,cartProduct);
-       console.log(result+'-----!');
        expect(result).toBe(5);
        expect(localStorageService.set.calls.length).toBe(2);
 

@@ -47,6 +47,7 @@ describe('Service: itemsService', function () {
        expect(items[0].name).toEqual('苹果');
        expect(items[8].name).toEqual('翡翠手镯');
        expect(items.length).toBe(9);
+       expect(cartService.set.calls.length).toBe(1);
    });
 
    it('should cartSum in addCart in right',function(){
@@ -55,6 +56,8 @@ describe('Service: itemsService', function () {
 
      var result = itemsService.addCart(item);
      expect(result).toBe(4);
+     expect(cartService.get.calls.length).toBe(2);
+     expect(cartService.set.calls.length).toBe(4);
    });
 
    it('should judge can do', function(){

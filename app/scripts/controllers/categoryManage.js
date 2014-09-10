@@ -5,7 +5,7 @@ angular.module('anLetusgoApp')
 
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.getCategories();
-    // $scope.categories = categoryManageService.getInitCategories();
+    //$scope.categories = categoryManageService.buildCategoryData();
     $scope.clickAddCategory = false;
 
 
@@ -40,7 +40,7 @@ angular.module('anLetusgoApp')
 
     $scope.changeCategory = function(categoryName){
       $scope.clickChangeCategory = true;
-      localStorageService.set('categoryToBeChange',categoryName);
+      localStorageService.set('categoryToChange',categoryName);
     };
 
 

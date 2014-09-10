@@ -14,35 +14,39 @@
           var categories = localStorageService.get('categoryData');
 
           if(categories === null){
+
+            categories = categoryData;
             localStorageService.set('categories', categoryData);
+            return categories;
           }
       };
 
-      this.getInitCategories = function(){
-        this.buildCategoryData();
-        return localStorageService.get('categories');
-      };
 
       this.getCategories = function(){
         return localStorageService.get('categories');
       }
 
+
       this.setCategories = function(key,value){
         localStorageService.set(key,value);
       }
 
-      this.deleteCategoryButton = function(category){
 
+      this.deleteCategoryButton = function(category){
         var categories = this.getCategories();
         for(var i = 0; i < categories.length; i++){
-
           if(categories[i].name === category.name){
 
             categories = _.without(categories,categories[i]);
             this.setCategories('categories',categories);
           }
         };
+         this.deleteProductsWithDeleteCategory(category);
+         return categories;
+      };
 
+
+      this.deleteProductsWithDeleteCategory = function(category){
         var allProducts = localStorageService.get('allProducts');
         for(var i = 0; i < allProducts.length; i++){
           if(allProducts[i].category === category.name){
@@ -52,28 +56,32 @@
           }
         }
         localStorageService.set('allProducts',allProducts);
+        return allProducts;
       };
 
+
       this.changeName = function(categoryName,newName){
-
         var categories = this.getCategories();
-
         _.forEach(categories,function(category){
           if(category.name === categoryName){
               category.name = newName;
               localStorageService.set('categories',categories);
           };
         });
+        this.updateProductsCategory(categoryName,newName);
+        return categories;
+      };
+
+
+      this.updateProductsCategory = function(categoryName,newName){
 
         var allProducts = localStorageService.get('allProducts');
-
         _.forEach(allProducts,function(product){
           if(product.category === categoryName){
             product.category = newName;
-
             localStorageService.set('allProducts',allProducts);
           }
         });
+        return allProducts;
       };
-
 });
