@@ -13,6 +13,7 @@
         }
       }
       localStorageService.set('allProducts',allProducts);
+      return allProducts;
     };
 
 
@@ -29,6 +30,7 @@
             localStorageService.set('allProducts',allProducts);
         };
       });
+      return allProducts;
 
 };
 
