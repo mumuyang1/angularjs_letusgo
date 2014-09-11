@@ -17,7 +17,6 @@
 
             categories = categoryData;
             localStorageService.set('categories', categoryData);
-            return categories;
           }
       };
 
@@ -42,7 +41,7 @@
           }
         };
          this.deleteProductsWithDeleteCategory(category);
-         return categories;
+        //  return categories;
       };
 
 

@@ -44,9 +44,8 @@ describe('Service: categoryManageService', function () {
 
    it('should get categoryData is right', function(){
       localStorageService.set('categoryData',null);
-      var result = categoryService.buildCategoryData();
-      expect(result.length).toBe(4);
-      expect(result[0].id).toBe(1);
+      categoryService.buildCategoryData();
+      expect(localStorageService.set.calls.length).toBe(4);
 
    });
 
@@ -68,10 +67,11 @@ describe('Service: categoryManageService', function () {
    it('should deleteCategoryButton can do', function(){
       spyOn(categoryService,'getCategories').andReturn(categories);
       spyOn(categoryService,'deleteProductsWithDeleteCategory');
-      var result = categoryService.deleteCategoryButton(category);
-      expect(categoryService.getCategories.calls.length).toBe(1);
+      spyOn(categoryService,'setCategories');
+      categoryService.deleteCategoryButton(category);
       expect(categoryService.deleteProductsWithDeleteCategory.calls.length).toBe(1);
-      expect(result.length).toBe(0);
+      expect(categoryService.deleteProductsWithDeleteCategory.calls.length).toBe(1);
+
    });
 
 
