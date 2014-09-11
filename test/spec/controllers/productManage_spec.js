@@ -2,12 +2,10 @@
 
 describe('Controller: ProductManageCtrl', function () {
 
-
   beforeEach(module('anLetusgoApp'));
 
   var $controller,productService,categoryService,scope,createController,
-      cartItemService,categories,newName,newPrice,newUnit,newCategory,
-      allProducts,store;
+      cartItemService,categories,newName,allProducts,store;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -34,9 +32,6 @@ describe('Controller: ProductManageCtrl', function () {
       store = {};
 
       newName = '香蕉';
-      newPrice = '8.00';
-      newUnit = '个';
-      newCategory = '水果';
 
       var allProducts = [
                 {barcode:'ITEM000001',category:'水果',name:'香蕉',price:'3.50',unit:'斤'},
@@ -56,10 +51,6 @@ describe('Controller: ProductManageCtrl', function () {
       cartItemService.set('allProducts',allProducts);
 
       spyOn(scope,'$emit');
-      //
-      // spyOn(cartItemService,'get').andReturn('生活用品');
-      // spyOn(cartItemService,'set');
-      //
       spyOn(categoryService,'getCategories').andReturn(categories);
       spyOn(categoryService,'setCategories');
 
@@ -92,7 +83,7 @@ describe('Controller: ProductManageCtrl', function () {
 
   it('should finish add product can do',function(){
       createController();
-      scope.finishAddProduct(newName,newPrice,newUnit,newCategory);
+      scope.finishAddProduct();
       expect(scope.clickAddProduct).toBe(false);
       expect(scope.controlLayout).toBe(true);
       expect(scope.newProduct.barcode).toBe('ITEM000004');
