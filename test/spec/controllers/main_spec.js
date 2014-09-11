@@ -5,7 +5,7 @@ describe('Controller: MainCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var MainCtrl,$controller,scope,createController,$scope;
+  var $controller,scope,createController;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -25,6 +25,6 @@ describe('Controller: MainCtrl', function () {
         spyOn(scope,'$emit');
         createController();
         expect(scope.$emit).toHaveBeenCalledWith('to-parent-mainActive');
-    })
+    });
 
   });

@@ -5,9 +5,7 @@ describe('Controller: CartCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var CartCtrl,$controller,cartItemService,
-    scope,createController,$scope,cartProduct,store,item;
-
+  var $controller,cartItemService,scope,createController,cartProduct,store,item;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -62,7 +60,7 @@ describe('Controller: CartCtrl', function () {
       createController();
       expect(cartItemService.getTotal.calls.length).toBe(1);
       expect(scope.total).toBe(16);
-  })
+  });
 
   it('should addButton can do',function(){
 

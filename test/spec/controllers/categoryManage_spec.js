@@ -5,10 +5,8 @@ describe('Controller: CategoryManageCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var CategoryManageCtrl,$controller,categoryService,scope,createController,
-      $scope,cartItemService,clickAddCategory,clickChangeCategory,categories,
-      newCategoryName,newCategory;
-
+  var $controller,categoryService,scope,createController,cartItemService,
+      categories,newCategoryName;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -30,7 +28,9 @@ describe('Controller: CategoryManageCtrl', function () {
           {id: 1, name: '水果'},
           {id: 2, name: '生活用品'},
         ];
+
       newCategoryName = '零食';
+
       spyOn(cartItemService,'get').andReturn('生活用品');
       spyOn(cartItemService,'set');
       spyOn(scope,'$emit');

@@ -5,9 +5,7 @@ describe('Controller: PayCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var PayCtrl,$controller,cartItemService,
-    scope,createController,$scope,cartProduct,item;
-
+  var $controller,cartItemService,scope,createController,cartProduct,item;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();

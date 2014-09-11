@@ -5,8 +5,8 @@ describe('Controller: CartSumsCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var CartSumsCtrl,$controller,itemsService,cartItemService,
-    scope,createController,cartSum,item,$scope,cartProduct,$rootScope;
+  var $controller,itemsService,cartItemService,scope,$rootScope,
+      createController,item,cartProduct,cartSum;
 
 
   beforeEach(inject(function ($injector) {
@@ -24,7 +24,7 @@ describe('Controller: CartSumsCtrl', function () {
           ItemsService: itemsService,
           CartItemService: cartItemService
       });
-    }
+    };
 
     item = {barcode:'ITEM000007',category:'生活用品',name:'水杯',price:'16.00',unit:'个'};
 
@@ -46,7 +46,7 @@ describe('Controller: CartSumsCtrl', function () {
 
 
   it('should addCartSum can do',function(){
-    spyOn(itemsService,'addCart').andReturn(3);;
+    spyOn(itemsService,'addCart').andReturn(3);
     createController();
     scope.addCartSum(item);
     expect(itemsService.addCart.calls.length).toBe(1);
