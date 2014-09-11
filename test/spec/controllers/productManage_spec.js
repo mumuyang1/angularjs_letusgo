@@ -5,8 +5,9 @@ describe('Controller: ProductManageCtrl', function () {
 
   beforeEach(module('anLetusgoApp'));
 
-  var $controller,categoryService,scope,createController,cartItemService,
-      categories;
+  var $controller,productService,categoryService,scope,createController,
+      cartItemService,categories,newName,newPrice,newUnit,newCategory,
+      allProducts,store;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -14,6 +15,7 @@ describe('Controller: ProductManageCtrl', function () {
 
     cartItemService = $injector.get('CartItemService');
     categoryService = $injector.get('categoryManageService');
+    productService = $injector.get('productManageService');
 
     createController = function(){
 
@@ -28,10 +30,36 @@ describe('Controller: ProductManageCtrl', function () {
           {id: 1, name: '水果'},
           {id: 2, name: '生活用品'},
         ];
-      // newCategoryName = '零食';
-      spyOn(cartItemService,'get').andReturn('生活用品');
-      spyOn(cartItemService,'set');
+
+      store = {};
+
+      newName = '香蕉';
+      newPrice = '8.00';
+      newUnit = '个';
+      newCategory = '水果';
+
+      var allProducts = [
+                {barcode:'ITEM000001',category:'水果',name:'香蕉',price:'3.50',unit:'斤'},
+                {barcode:'ITEM000002',category:'水果',name:'菠萝',price:'4.00',unit:'个'},
+                {barcode:'ITEM000003',category:'饰品',name:'钻石项链',price:'160000.00',unit:'个'}
+              ];
+
+      spyOn(cartItemService,'get').andCallFake(function (key) {
+       return store[key];
+       });
+
+      spyOn(cartItemService,'set').andCallFake(function (key, value) {
+         return store[key] = value;
+       });
+
+      cartItemService.set('categories',categories);
+      cartItemService.set('allProducts',allProducts);
+
       spyOn(scope,'$emit');
+      //
+      // spyOn(cartItemService,'get').andReturn('生活用品');
+      // spyOn(cartItemService,'set');
+      //
       spyOn(categoryService,'getCategories').andReturn(categories);
       spyOn(categoryService,'setCategories');
 
@@ -60,55 +88,61 @@ describe('Controller: ProductManageCtrl', function () {
       expect(scope.clickAddProduct).toBe(true);
       expect(categoryService.getCategories.calls.length).toBe(1);
   });
-  //
-  //
-  // it('should finish add category can do',function(){
-  //     createController();
-  //     scope.finishAddCategory(newCategoryName);
-  //     expect(scope.clickAddCategory).toBe(false);
-  //     expect(scope.newCategory.id).toBe(3);
-  //     expect(categoryService.setCategories.calls.length).toBe(1);
-  // });
-  //
-  //
-  // it('should add category can cancel',function(){
-  //     createController();
-  //     scope.cancelAddCategory();
-  //     expect(scope.clickAddCategory ).toBe(false);
-  // });
-  //
-  //
-  // it('should delete category can do',function(){
-  //     spyOn(categoryService,'deleteCategoryButton');
-  //     createController();
-  //     scope.deleteCategory();
-  //     expect(categoryService.deleteCategoryButton.calls.length).toBe(1);
-  //     expect(categoryService.getCategories.calls.length).toBe(2);
-  // });
-  //
-  //
-  // it('should change category view can show',function(){
-  //     createController();
-  //     scope.changeCategory();
-  //     expect(scope.clickChangeCategory).toBe(true);
-  //     expect(cartItemService.set.calls.length).toBe(1);
-  //
-  // });
-  //
-  // it('should finish change category can do',function(){
-  //     spyOn(categoryService,'changeName');
-  //     createController();
-  //     scope.finishChangeCategory(newCategoryName);
-  //     expect(scope.clickChangeCategory).toBe(false);
-  //     expect(cartItemService.get.calls.length).toBe(1);
-  //     expect(categoryService.changeName.calls.length).toBe(1);
-  //     expect(categoryService.getCategories.calls.length).toBe(2);
-  // });
-  //
-  // it('should change category can cancel',function(){
-  //     createController();
-  //     scope.cancelChangeCategory();
-  //     expect(scope.clickAddCategory ).toBe(false);
-  // });
+
+
+  it('should finish add product can do',function(){
+      createController();
+      scope.finishAddProduct(newName,newPrice,newUnit,newCategory);
+      expect(scope.clickAddProduct).toBe(false);
+      expect(scope.controlLayout).toBe(true);
+      expect(scope.newProduct.barcode).toBe('ITEM000004');
+      expect(scope.allProducts.length).toBe(4);
+      expect(cartItemService.set.calls.length).toBe(3);
+  });
+
+
+  it('should add product can cancel',function(){
+      createController();
+      scope.cancelAddProduct();
+      expect(scope.clickAddProduct).toBe(false);
+      expect(scope.controlLayout).toBe(true);
+  });
+
+
+  it('should delete product can do',function(){
+      spyOn(productService,'deleteProductButton');
+      createController();
+      scope.deleteProduct();
+      expect(productService.deleteProductButton.calls.length).toBe(1);
+      expect(cartItemService.get.calls.length).toBe(2);
+  });
+
+  it('should change product view can show',function(){
+      cartItemService.set('productToChange',newName);
+      createController();
+      scope.changeProduct();
+      expect(scope.clickChangeProduct).toBe(true);
+      expect(scope.controlLayout).toBe(false);
+      expect(cartItemService.set.calls.length).toBe(4);
+      expect(categoryService.getCategories.calls.length).toBe(1);
+
+  });
+
+  it('should finish change category can do',function(){
+      spyOn(productService,'changeProduct');
+      createController();
+      scope.finishChangeProduct();
+      expect(scope.clickAddProduct).toBe(false);
+      expect(scope.controlLayout).toBe(true);
+      expect(productService.changeProduct.calls.length).toBe(1);
+      expect(cartItemService.get.calls.length).toBe(3);
+  });
+
+  it('should change product can cancel',function(){
+      createController();
+      scope.cancelChangeProduct();
+      expect(scope.clickAddProduct).toBe(false);
+      expect(scope.controlLayout).toBe(true);
+  });
 
 });

@@ -25,7 +25,7 @@ angular.module('anLetusgoApp')
         var i = +$scope.allProducts[$scope.allProducts.length - 1].barcode.substring(9,$scope.newProduct.barcode.length) + 1;
         $scope.newProduct.barcode = $scope.allProducts[$scope.allProducts.length - 1].barcode.substring(0,9) + i;
         $scope.allProducts.push($scope.newProduct);
-        localStorageService.set('allProducts',$scope.allProducts);
+        CartItemService.set('allProducts',$scope.allProducts);
       };
 
 
@@ -42,14 +42,14 @@ angular.module('anLetusgoApp')
         $scope.clickChangeProduct = true;
         $scope.controlLayout = false;
         $scope.categories = categoryManageService.getCategories();
-        CartItemService.set('productToBeChange',categoryName);
+        CartItemService.set('productToChange',categoryName);
       };
 
 
       $scope.finishChangeProduct = function(newName,newPrice,newUnit,newCategory){
         $scope.clickChangeProduct = false;
         $scope.controlLayout = true;
-        $scope.productToBeChange = CartItemService.get('productToBeChange');
+        $scope.productToBeChange = CartItemService.get('productToChange');
         productManageService.changeProduct($scope.productToBeChange,newName,newPrice,newUnit,newCategory);
         $scope.allProducts = CartItemService.get('allProducts');
       };
