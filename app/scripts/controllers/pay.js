@@ -4,7 +4,7 @@ angular.module('anLetusgoApp')
     .controller('PayCtrl', function ($scope,CartItemService) {
 
 
-      $scope.$emit('to-parent-payActive');
+      $scope.$emit('to-parent-cartActive');
       $scope.cartItems = CartItemService.get('cartProduct');
       $scope.total = CartItemService.getTotal($scope.cartItems);
 
