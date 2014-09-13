@@ -62,14 +62,6 @@ angular.module('anLetusgoApp')
           $scope.productManageActive = false;
       });
 
-      $scope.$on('to-parent-payActive', function () {
-          $scope.mainActive = false;
-          $scope.shoppingMallActive = false;
-          $scope.cartActive = false;
-          $scope.payActive = true;
-          $scope.productManageActive = false;
-      });
-
       $scope.$on('to-parent-productManageActive', function () {
           $scope.mainActive = false;
           $scope.shoppingMallActive = false;
