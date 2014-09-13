@@ -3,7 +3,7 @@
 angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
   this.getItems = function(){
 
-    var allProducts = [
+    var allProductsArray = [
               {barcode:'ITEM000001',category:'水果',name:'苹果',price:'3.00',unit:'斤'},
               {barcode:'ITEM000002',category:'水果',name:'香蕉',price:'3.50',unit:'斤'},
               {barcode:'ITEM000003',category:'水果',name:'菠萝',price:'4.00',unit:'个'},
@@ -14,10 +14,27 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
               {barcode:'ITEM000008',category:'饰品',name:'钻石项链',price:'160000.00',unit:'个'},
               {barcode:'ITEM000009',category:'饰品',name:'翡翠手镯',price:'200.00',unit:'个'}
             ];
-    CartItemService.set('allProducts',allProducts);
-    return allProducts;
+    // CartItemService.set('allProducts',allProducts);
+    //
+    // return allProducts;
+    var allProducts = CartItemService.get('allProducts');
+    return allProducts ? allProducts : CartItemService.set('allProducts',allProductsArray);
 
   };
+
+     this.loadAllProducts = function(pageNow){
+        var products = CartItemService.get('allProducts') || [];
+        if(pageNow){
+          return products.slice((pageNow-1)*2,pageNow*2);
+        }else{
+          return products;
+        }
+    };
+    this.getPageTotal = function(){
+      var totalCount = this.loadAllProducts(null).length;
+      var pageCount = totalCount % 2 == 0 ?  parseInt(totalCount / 2) : parseInt(totalCount / 2) + 1;
+      return _.range(1,pageCount + 1);
+    };
 
   this.addCart = function(item){
       var cartSum = +CartItemService.get('cartSum');
