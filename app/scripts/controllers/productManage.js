@@ -8,6 +8,7 @@ angular.module('anLetusgoApp')
 
       $scope.controlLayout = true;
       $scope.clickAddProduct = false;
+      $scope.clickDeleteProduct = false;
 
 
       $scope.addProduct = function(){
