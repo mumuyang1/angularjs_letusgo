@@ -38,6 +38,7 @@ angular.module('anLetusgoApp')
 
 
     $scope.changeCategory = function(categoryName){
+      $scope.newName = categoryName;
       $scope.clickChangeCategory = true;
       CartItemService.set('categoryToChange',categoryName);
     };
