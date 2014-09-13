@@ -19,7 +19,7 @@
 
     this.changeProduct = function(productToBeChange,newName,newPrice,newUnit,newCategory){
 
-      var allProducts = localStorageService.get('allProducts');;
+      var allProducts = localStorageService.get('allProducts');
 
       _.forEach(allProducts,function(product){
         if(product.name === productToBeChange){
@@ -28,7 +28,7 @@
             product.unit = newUnit;
             product.category = newCategory;
             localStorageService.set('allProducts',allProducts);
-        };
+        }
       });
       return allProducts;
   };
