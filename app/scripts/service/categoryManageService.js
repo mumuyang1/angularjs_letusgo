@@ -26,11 +26,21 @@
         localStorageService.set(key,value);
       };
 
+      this.hasProductsInTheCategory = function(name){
+        var products = localStorageService.get('allProducts');
+        var has;
+
+        _.forEach(products,function(product){
+            has = _.contains(product, name);
+        });
+          return has;
+      };
 
       this.deleteCategoryButton = function(category){
+
         var categories = this.getCategories();
         for(var i = 0; i < categories.length; i++){
-          if(categories[i].name === category.name){
+          if(categories[i].name === category){
 
             categories = _.without(categories,categories[i]);
             this.setCategories('categories',categories);
@@ -43,7 +53,7 @@
       this.deleteProductsWithDeleteCategory = function(category){
         var allProducts = localStorageService.get('allProducts');
         for(var i = 0; i < allProducts.length; i++){
-          if(allProducts[i].category === category.name){
+          if(allProducts[i].category === category){
 
             allProducts = _.without(allProducts,allProducts[i]);
             i--;

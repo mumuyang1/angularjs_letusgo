@@ -31,8 +31,28 @@ angular.module('anLetusgoApp')
 
 
     $scope.deleteCategory = function(category){
-      categoryManageService.deleteCategoryButton(category);
-      $scope.categories = categoryManageService.getCategories();
+
+      if(categoryManageService.hasProductsInTheCategory(category)){
+        $scope.clickDelete = true;
+        CartItemService.set('categoryToDelete',category);
+      }
+      else{
+
+        categoryManageService.deleteCategoryButton(category);
+        $scope.categories = categoryManageService.getCategories();
+      }
+    };
+
+    $scope.finishDelete = function(){
+      var categoryToDelete = CartItemService.get('categoryToDelete');
+      categoryManageService.deleteCategoryButton(categoryToDelete);
+      $scope.categories = CartItemService.get('categories');
+      $scope.clickDelete = false;
+
+    };
+
+    $scope.cancelDelete = function(){
+      $scope.clickDelete = false;
     };
 
     $scope.changeCategory = function(categoryName){
