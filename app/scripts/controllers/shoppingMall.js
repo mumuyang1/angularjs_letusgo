@@ -3,7 +3,6 @@
 angular.module('anLetusgoApp')
     .controller('ShoppingMallCtrl', function ($scope,CartItemService,ItemsService,$routeParams) {
 
-        // $scope.items = CartItemService.get('allProducts');
         $scope.items = ItemsService.getItems();
         $scope.$emit('to-parent-shoppingMallActive');
 

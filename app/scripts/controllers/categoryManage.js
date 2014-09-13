@@ -4,8 +4,7 @@ angular.module('anLetusgoApp')
 .controller('CategoryManageCtrl', function ($scope,categoryManageService,CartItemService) {
 
     $scope.$emit('to-parent-productManageActive');
-    $scope.categories = categoryManageService.getCategories();
-    //$scope.categories = categoryManageService.buildCategoryData();
+    $scope.categories = categoryManageService.buildCategoryData();
     $scope.clickAddCategory = false;
 
 

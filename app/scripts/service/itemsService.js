@@ -14,9 +14,6 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
               {barcode:'ITEM000008',category:'饰品',name:'钻石项链',price:'160000.00',unit:'个'},
               {barcode:'ITEM000009',category:'饰品',name:'翡翠手镯',price:'200.00',unit:'个'}
             ];
-    // CartItemService.set('allProducts',allProducts);
-    //
-    // return allProducts;
     var allProducts = CartItemService.get('allProducts');
     return allProducts ? allProducts : CartItemService.set('allProducts',allProductsArray);
 

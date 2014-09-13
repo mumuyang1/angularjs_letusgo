@@ -11,13 +11,9 @@
               {id: 3, name: '生活用品'},
               {id: 4, name: '饰品'}
             ];
-          var categories = localStorageService.get('categoryData');
+          var categories = localStorageService.get('categories');
+          return categories ? categories : localStorageService.set('categories', categoryData);
 
-          if(categories === null){
-
-            categories = categoryData;
-            localStorageService.set('categories', categoryData);
-          }
       };
 
 
