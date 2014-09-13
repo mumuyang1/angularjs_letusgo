@@ -107,7 +107,6 @@ describe('Controller: CartSumsCtrl', function () {
     scope.$digest();
     expect(scope.mainActive).toBe(true);
     expect(scope.cartActive).toBe(false);
-    expect(scope.payActive).toBe(false);
     expect(scope.shoppingMallActive).toBe(false);
     expect(scope.productManageActive).toBe(false);
   });
@@ -120,7 +119,6 @@ describe('Controller: CartSumsCtrl', function () {
     scope.$digest();
     expect(scope.mainActive).toBe(false);
     expect(scope.cartActive).toBe(false);
-    expect(scope.payActive).toBe(false);
     expect(scope.shoppingMallActive).toBe(true);
     expect(scope.productManageActive).toBe(false);
   });
@@ -133,7 +131,6 @@ describe('Controller: CartSumsCtrl', function () {
     scope.$digest();
     expect(scope.mainActive).toBe(false);
     expect(scope.cartActive).toBe(true);
-    expect(scope.payActive).toBe(false);
     expect(scope.shoppingMallActive).toBe(false);
     expect(scope.productManageActive).toBe(false);
   });
@@ -141,28 +138,14 @@ describe('Controller: CartSumsCtrl', function () {
 
   it('should to-parent-productManageActive can do',function(){
 
-      createController();
-      scope.$digest();
-      $rootScope.$broadcast('to-parent-productManageActive');
-      scope.$digest();
-      expect(scope.mainActive).toBe(false);
-      expect(scope.cartActive).toBe(false);
-      expect(scope.payActive).toBe(false);
-      expect(scope.shoppingMallActive).toBe(false);
-      expect(scope.productManageActive).toBe(true);
-  });
-  it('should to-parent-payActive can do',function(){
-
     createController();
     scope.$digest();
-    $rootScope.$broadcast('to-parent-payActive');
+    $rootScope.$broadcast('to-parent-productManageActive');
     scope.$digest();
     expect(scope.mainActive).toBe(false);
     expect(scope.cartActive).toBe(false);
-    expect(scope.payActive).toBe(true);
     expect(scope.shoppingMallActive).toBe(false);
-    expect(scope.productManageActive).toBe(false);
+    expect(scope.productManageActive).toBe(true);
   });
-
 
 });
