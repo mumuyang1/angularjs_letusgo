@@ -42,7 +42,6 @@ angular.module('anLetusgoApp')
           $scope.mainActive = true;
           $scope.shoppingMallActive = false;
           $scope.cartActive = false;
-          $scope.payActive = false;
           $scope.productManageActive = false;
       });
 
@@ -50,7 +49,6 @@ angular.module('anLetusgoApp')
           $scope.mainActive = false;
           $scope.shoppingMallActive = true;
           $scope.cartActive = false;
-          $scope.payActive = false;
           $scope.productManageActive = false;
       });
 
@@ -58,7 +56,6 @@ angular.module('anLetusgoApp')
           $scope.mainActive = false;
           $scope.shoppingMallActive = false;
           $scope.cartActive = true;
-          $scope.payActive = false;
           $scope.productManageActive = false;
       });
 
@@ -66,7 +63,6 @@ angular.module('anLetusgoApp')
           $scope.mainActive = false;
           $scope.shoppingMallActive = false;
           $scope.cartActive = false;
-          $scope.payActive = false;
           $scope.productManageActive = true;
       });
 
