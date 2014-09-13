@@ -40,10 +40,14 @@ angular.module('anLetusgoApp')
 
       $scope.changeProduct = function(categoryName){
         var productToChange = productManageService.getProductByName(categoryName);
-        $scope.newName = categoryName;
-        $scope.newPrice = productToChange.price;
-        $scope.newUnit = productToChange.unit;
-        $scope.newProductCategory = productToChange.category;
+
+        $scope.itemToChange = {
+            name : categoryName,
+            price : productToChange.price,
+            unit : productToChange.unit,
+            category : productToChange.category
+        };
+
         $scope.clickChangeProduct = true;
         $scope.controlLayout = false;
         $scope.categories = categoryManageService.getCategories();

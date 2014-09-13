@@ -2,12 +2,6 @@
 
 angular.module('anLetusgoApp')
     .controller('CartCtrl', function ($scope,CartItemService) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma',
-            'LocalStorageModule'
-        ];
 
         $scope.$emit('to-parent-cartActive');
         $scope.cartItems = CartItemService.get('cartProduct');
@@ -19,7 +13,7 @@ angular.module('anLetusgoApp')
             $scope.$emit('to-parent-add',cartItems,$scope.cartItems);
             $scope.cartItems = CartItemService.get('cartProduct');
             $scope.total = CartItemService.getTotal($scope.cartItems);
-
+ 
         };
 
         $scope.reduceButton = function (cartItems) {
