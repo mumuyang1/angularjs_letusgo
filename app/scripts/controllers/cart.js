@@ -33,5 +33,5 @@ angular.module('anLetusgoApp')
             $scope.$emit('to-parent-delete',cartItems,$scope.cartItems);
             $scope.cartItems = CartItemService.get('cartProduct');
             $scope.total = CartItemService.getTotal($scope.cartItems);
-        }
+        };
     });
