@@ -68,7 +68,7 @@ angular.module('anLetusgoApp')
           $scope.cartActive = false;
           $scope.payActive = true;
           $scope.productManageActive = false;
-      })
+      });
 
       $scope.$on('to-parent-productManageActive', function () {
           $scope.mainActive = false;
@@ -76,6 +76,6 @@ angular.module('anLetusgoApp')
           $scope.cartActive = false;
           $scope.payActive = false;
           $scope.productManageActive = true;
-      })
+      });
 
     });
