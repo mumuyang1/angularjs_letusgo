@@ -20,16 +20,16 @@ angular.module('anLetusgoApp').service('ItemsService',function(CartItemService){
   };
 
      this.loadAllProducts = function(pageNow){
-        var products = CartItemService.get('allProducts') || [];
+        var products = this.getItems();
         if(pageNow){
-          return products.slice((pageNow-1)*2,pageNow*2);
+          return products.slice((pageNow-1)*3,pageNow*3);
         }else{
           return products;
         }
     };
     this.getPageTotal = function(){
       var totalCount = this.loadAllProducts(null).length;
-      var pageCount = totalCount % 2 == 0 ?  parseInt(totalCount / 2) : parseInt(totalCount / 2) + 1;
+      var pageCount = totalCount % 3 == 0 ?  parseInt(totalCount / 3) : parseInt(totalCount / 3) + 1;
       return _.range(1,pageCount + 1);
     };
 
