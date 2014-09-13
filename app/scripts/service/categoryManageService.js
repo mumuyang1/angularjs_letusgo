@@ -19,12 +19,12 @@
 
       this.getCategories = function(){
         return localStorageService.get('categories');
-      }
+      };
 
 
       this.setCategories = function(key,value){
         localStorageService.set(key,value);
-      }
+      };
 
 
       this.deleteCategoryButton = function(category){
@@ -35,7 +35,7 @@
             categories = _.without(categories,categories[i]);
             this.setCategories('categories',categories);
           }
-        };
+        }
          this.deleteProductsWithDeleteCategory(category);
         //  return categories;
       };
@@ -61,7 +61,7 @@
           if(category.name === categoryName){
               category.name = newName;
               localStorageService.set('categories',categories);
-          };
+          }
         });
         this.updateProductsCategory(categoryName,newName);
         return categories;
