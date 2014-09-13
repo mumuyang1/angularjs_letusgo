@@ -38,7 +38,7 @@ describe('Controller: PayCtrl', function () {
 
       spyOn(scope,'$emit');
       createController();
-      expect(scope.$emit).toHaveBeenCalledWith('to-parent-payActive');
+      expect(scope.$emit).toHaveBeenCalledWith('to-parent-cartActive');
       expect(cartItemService.get.calls.length).toBe(1);
       expect(scope.cartItems.length).toBe(1);
       expect(scope.total).toBe(16);

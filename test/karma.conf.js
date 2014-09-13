@@ -74,6 +74,14 @@ module.exports = function (config) {
         // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
         logLevel: config.LOG_INFO,
 
+        // coverage reporter generates the coverage
+        reporters: ['progress', 'coverage'],
+        // optionally, configure the reporter
+        coverageReporter: {
+          type : 'text',
+          dir : 'coverage/'
+        }
+
         // Uncomment the following lines if you are using grunt's server to run the tests
         // proxies: {
         //   '/': 'http://localhost:9000/'
