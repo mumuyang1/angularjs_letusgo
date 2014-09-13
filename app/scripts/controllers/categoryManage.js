@@ -6,6 +6,8 @@ angular.module('anLetusgoApp')
     $scope.$emit('to-parent-productManageActive');
     $scope.categories = categoryManageService.buildCategoryData();
     $scope.clickAddCategory = false;
+    $scope.clickChangeCategory = false;
+    $scope.clickDelete = false;
 
 
     $scope.addCategory = function(){
@@ -32,10 +34,6 @@ angular.module('anLetusgoApp')
       categoryManageService.deleteCategoryButton(category);
       $scope.categories = categoryManageService.getCategories();
     };
-
-
-    $scope.clickChangeCategory = false;
-
 
     $scope.changeCategory = function(categoryName){
       $scope.newName = categoryName;
