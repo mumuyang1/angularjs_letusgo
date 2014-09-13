@@ -39,6 +39,7 @@ angular.module('anLetusgoApp')
 
 
       $scope.changeProduct = function(categoryName){
+        $scope.newName = categoryName;
         $scope.clickChangeProduct = true;
         $scope.controlLayout = false;
         $scope.categories = categoryManageService.getCategories();

@@ -31,9 +31,14 @@
         };
       });
       return allProducts;
+  };
 
-};
 
+    this.getProductByName = function(name){
+
+      var products = localStorageService.get('allProducts');
+      return _.find(products,{name : name});
+    };
 
 
 
