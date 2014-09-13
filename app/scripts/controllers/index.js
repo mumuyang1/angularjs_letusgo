@@ -2,12 +2,6 @@
 
 angular.module('anLetusgoApp')
     .controller('CartSumsCtrl', function ($scope,ItemsService, CartItemService) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma',
-            'LocalStorageModule'
-        ];
 
       var temp = CartItemService.get('cartSum');
       var cartSum = temp ? parseInt(temp) : 0;

@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name anLetusgoApp
- * @description
- * # anLetusgoApp
- *
- * Main module of the application.
- */
 angular
   .module('anLetusgoApp', [
     'ngAnimate',
@@ -28,10 +20,6 @@ angular
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
       })
       .when('/shoppingMall/:pageNow', {
         templateUrl: 'views/shoppingMall.html',
