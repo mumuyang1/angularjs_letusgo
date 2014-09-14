@@ -45,7 +45,7 @@ describe('Service: categoryManageService', function () {
    it('should get categoryData is right', function(){
       localStorageService.set('categoryData',null);
       categoryService.buildCategoryData();
-      expect(localStorageService.set.calls.length).toBe(4);
+      expect(localStorageService.set.calls.length).toBe(3);
 
    });
 

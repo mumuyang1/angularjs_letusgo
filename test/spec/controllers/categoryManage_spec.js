@@ -47,10 +47,12 @@ describe('Controller: CategoryManageCtrl', function () {
 
 
   it('should show view and hide add and change ok',function(){
+      spyOn(categoryService,'buildCategoryData');
       createController();
-      expect(categoryService.getCategories.calls.length).toBe(1);
+      expect(categoryService.buildCategoryData.calls.length).toBe(1);
       expect(scope.clickAddCategory).toBe(false);
       expect(scope.clickChangeCategory).toBe(false);
+      expect(scope.clickDelete).toBe(false);
   });
 
   it('should add category view can show',function(){
@@ -76,12 +78,12 @@ describe('Controller: CategoryManageCtrl', function () {
   });
 
 
-  it('should delete category can do',function(){
+  it('should finish delete category can do',function(){
       spyOn(categoryService,'deleteCategoryButton');
       createController();
-      scope.deleteCategory();
+      scope.finishDelete();
       expect(categoryService.deleteCategoryButton.calls.length).toBe(1);
-      expect(categoryService.getCategories.calls.length).toBe(2);
+      expect(cartItemService.get.calls.length).toBe(2);
   });
 
 
@@ -100,7 +102,7 @@ describe('Controller: CategoryManageCtrl', function () {
       expect(scope.clickChangeCategory).toBe(false);
       expect(cartItemService.get.calls.length).toBe(1);
       expect(categoryService.changeName.calls.length).toBe(1);
-      expect(categoryService.getCategories.calls.length).toBe(2);
+      expect(categoryService.getCategories.calls.length).toBe(1);
   });
 
   it('should change category can cancel',function(){
