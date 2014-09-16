@@ -5,7 +5,7 @@ describe('Controller: ProductManageCtrl', function () {
   beforeEach(module('anLetusgoApp'));
 
   var $controller,productService,categoryService,scope,createController,
-      cartItemService,categories,newName,allProducts,store;
+      cartItemService,categories,newName,allProducts,store,product;
 
   beforeEach(inject(function ($injector) {
     scope = $injector.get('$rootScope').$new();
@@ -33,11 +33,12 @@ describe('Controller: ProductManageCtrl', function () {
 
       newName = '香蕉';
 
-      var allProducts = [
+     allProducts = [
                 {barcode:'ITEM000001',category:'水果',name:'香蕉',price:'3.50',unit:'斤'},
                 {barcode:'ITEM000002',category:'水果',name:'菠萝',price:'4.00',unit:'个'},
                 {barcode:'ITEM000003',category:'饰品',name:'钻石项链',price:'160000.00',unit:'个'}
               ];
+      product = {barcode:'ITEM000001',category:'水果',name:'香蕉',price:'3.50',unit:'斤'};
 
       spyOn(cartItemService,'get').andCallFake(function (key) {
        return store[key];
@@ -109,9 +110,11 @@ describe('Controller: ProductManageCtrl', function () {
   });
 
   it('should change product view can show',function(){
-      cartItemService.set('productToChange',newName);
+      cartItemService.set('allProducts',allProducts);
+
+      spyOn(productService,'getProductByName').andReturn(product);
       createController();
-      scope.changeProduct();
+      scope.changeProduct(newName);
       expect(scope.clickChangeProduct).toBe(true);
       expect(scope.controlLayout).toBe(false);
       expect(cartItemService.set.calls.length).toBe(4);
@@ -123,7 +126,7 @@ describe('Controller: ProductManageCtrl', function () {
       spyOn(productService,'changeProduct');
       createController();
       scope.finishChangeProduct();
-      expect(scope.clickAddProduct).toBe(false);
+      expect(scope.clickChangeProduct).toBe(false);
       expect(scope.controlLayout).toBe(true);
       expect(productService.changeProduct.calls.length).toBe(1);
       expect(cartItemService.get.calls.length).toBe(3);

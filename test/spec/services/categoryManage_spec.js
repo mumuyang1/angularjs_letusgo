@@ -76,7 +76,7 @@ describe('Service: categoryManageService', function () {
 
 
    it('should delete all products with the category when deleteCategory', function(){
-      var result = categoryService.deleteProductsWithDeleteCategory(category);
+      var result = categoryService.deleteProductsWithDeleteCategory(category.name);
       expect(localStorageService.get.calls.length).toBe(1);
       expect(result.length).toBe(1);
       expect(result[0].category).toBe('饮料');
